@@ -22,6 +22,6 @@ jobs:
     - name: Deploy Issue
       uses: fjogeleit/http-request-action@v1
       with:
-        url: ${{ secrets.USER_ISUE_POST_URL }}
+        url: ${{ secrets.USER_ISSUE_POST_URL }}
         method: 'POST'
         issue: github.event.issue.body
