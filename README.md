@@ -9,3 +9,7 @@ Nowadays is not an excuse to don't have secure and equal spaces in events, but t
 
 # How to register into the app
 You can only register **yourself** and this should be creating an issue, we have a template that you should follow to be easy to add you to our database.
+
+# Roadmap
+- [ ] Closed Beta for people that feels underrepresented in our industry.
+- [ ] Open to everyone 
