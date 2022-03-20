@@ -1,0 +1,21 @@
+name: User Issue
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  user_isue_check_labels:
+    runs-on: ubuntu-latest
+    steps:
+    - name: if_issue
+      if: |
+        github.event.issue &&
+        contains(github.event.issue.labels.*.name, 'User') &&
+        !contains(github.event.issue.labels.*.name, 'Draft')
+      run: |
+        echo this is an issue of type user and its not a draft
+    - name: if_issue_ready
+      if: github.event.label.name == 'Ready'
+      run: |
+        echo The Issue about user is ready
