@@ -25,6 +25,6 @@ jobs:
       with:
         url: ${{ secrets.USER_ISSUE_POST_URL }}
         method: 'POST'
-        data: '{"issue":"github.event.issue.body"}'
+        data: '{"issue":"${{github.event.issue.body}}"}'
     - name: Show Response
       run: echo ${{ steps.issuePost.outputs.response }}
