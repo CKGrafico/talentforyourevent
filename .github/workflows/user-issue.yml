@@ -19,3 +19,9 @@ jobs:
       if: github.event.label.name == 'Ready'
       run: |
         echo The Issue about user is ready
+    - name: Deploy Issue
+      uses: fjogeleit/http-request-action@v1
+      with:
+        url: ${{ secrets.USER_ISUE_POST_URL }}
+        method: 'POST'
+        issue: github.event.issue.body
