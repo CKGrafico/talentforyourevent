@@ -20,8 +20,11 @@ jobs:
       run: |
         echo The Issue about user is ready
     - name: Deploy Issue
+      id: issuePost
       uses: fjogeleit/http-request-action@v1
       with:
         url: ${{ secrets.USER_ISSUE_POST_URL }}
         method: 'POST'
         issue: github.event.issue.body
+    - name: Show Response
+      run: echo ${{ steps.issuePost.outputs.response }}
