@@ -2,7 +2,7 @@ name: User Issue
 
 on:
   issues:
-    types: [labeled]
+    types: [unlabeled]
 
 jobs:
   user_isue_check_labels:
