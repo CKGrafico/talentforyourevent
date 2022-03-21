@@ -26,8 +26,8 @@ Once you finish filling the form, please remove the **Draft** label and we will 
 #### Categories
 - [ ] Backend
 - [ ] Frontend
-- [ ] UserExperience
-- [ ] UserInterface
+- [ ] User Experience
+- [ ] User Interface
 - [ ] Agile
 - [ ] Cloud
 - [ ] Security
@@ -35,7 +35,7 @@ Once you finish filling the form, please remove the **Draft** label and we will 
 - [ ] IoT
 
 #### Technologies
-<details open>
+<details>
   <summary>Backend</summary>
   
 - [ ] Java
@@ -48,6 +48,13 @@ Once you finish filling the form, please remove the **Draft** label and we will 
 - [ ] JavaScript
 - [ ] TypeScript
 - [ ] Layout
+</details>
+<details>
+  <summary>Cloud</summary>
+  
+- [ ] AWS
+- [ ] Google Cloud
+- [ ] Azure
 </details>
 
 # ...
