@@ -14,11 +14,7 @@ jobs:
         contains(github.event.issue.labels.*.name, 'User') &&
         !contains(github.event.issue.labels.*.name, 'Draft')
       run: |
-        echo this is an issue of type user and its not a draft
-    - name: if_issue_ready
-      if: github.event.label.name == 'Ready'
-      run: |
-        echo The Issue about user is ready
+        echo this is an issue of type user and its not a draft, we can proceed
     - name: Deploy Issue
       id: issuePost
       uses: fjogeleit/http-request-action@v1
