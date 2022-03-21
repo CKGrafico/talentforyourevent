@@ -14,13 +14,43 @@ Once you finish filling the form, please remove the **Draft** label and we will 
 # ...
 |Key| Value|
 |---|------|
-|Twitter|ckgrafico|
-|Github|ckgrafico|
-|Website|https://blog.ckgrafico.com|
-|Biography|Frontend Developer ready to help in your next event|
-|EventType|<ul><li>- [ ] Onsite</li><li>- [ ] Online</li></ul>|
-|Categories|<ul><li>- [ ] Backend</li><li>- [ ] Frontend</li><li>- [ ] UserExperience</li><li>- [ ] UserInterface</li><li>- [ ] Agile</li><li>- [ ] Cloud</li><li>- [ ] Security</li><li>- [ ] Devops</li><li>- [ ] IoT</li></ul>|
-|Technologies|**Backend**<ul><li>- [ ] Java</li><li>- [ ] .Net</li><li>- [ ] PHP</li></ul>**Frontend**<ul><li>- [ ] JavaScript</li><li>- [ ] TypeScript</li></ul>|
+|Twitter|your_twitter_name_without_at_symbol|
+|Github|your_github_profile|
+|Website|https://your_website_com|
+|Biography|a_short_description_v1_spanish_language_is_recommended|
+
+#### EventType
+- [ ] Onsite
+- [ ] Online
+
+#### Categories
+- [ ] Backend
+- [ ] Frontend
+- [ ] UserExperience
+- [ ] UserInterface
+- [ ] Agile
+- [ ] Cloud
+- [ ] Security
+- [ ] Devops
+- [ ] IoT
+
+#### Technologies
+<details open>
+  <summary>Backend</summary>
+  
+- [ ] Java
+- [ ] .Net
+- [ ] PHP
+</details>
+<details>
+  <summary>Frontend</summary>
+  
+- [ ] JavaScript
+- [ ] TypeScript
+- [ ] Layout
+</details>
+
 # ...
 
-- [ ]  Checking this checkbox I confirm that I feel my profile as an underrepresented profile in tech industry.
+- [ ]  Checking this checkbox I confirm that I feel my profile as an underrepresented profile in tech industry (Beta opened onyl if this checkbox is checked)
+
