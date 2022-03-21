@@ -10,7 +10,7 @@ assignees: ''
 This template will help you to add a new user to the platform, the **Twitter** field is required and you're not going to be able to change it.
 Please, remember that you cannot add more fields or modify the template below, if you want to do it create a regular issue.
 
-Once you finish filling the form, please remove the **Draft** label and we will proceed with the validation.
+Once you finish filling the form, please add a comment and we will remove the **Draft** label to proceed with the validation.
 
 # ...
 |Key| Value|
