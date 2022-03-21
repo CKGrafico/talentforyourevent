@@ -12,7 +12,7 @@ jobs:
       if: |
         github.event.issue &&
         contains(github.event.issue.labels.*.name, 'User') &&
-        ${{ github.event.issue == == 'Draft' }}
+        ${{ github.event.issue == 'Draft' }}
       run: |
         echo this is an issue of type user and its not a draft, we can proceed
     - name: Deploy Issue
