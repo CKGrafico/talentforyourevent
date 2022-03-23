@@ -9,6 +9,11 @@ Nowadays is not an excuse to don't have secure and equal spaces in events, but t
 
 # How to register into the app
 You can only register **yourself** and this should be creating an issue, we have a template that you should follow to be easy to add you to our database.
+1. Go to open [**new Issue**](https://github.com/CKGrafico/talentforyourevent/issues/new/choose).
+1. Choose the template **Add User to platform**.
+1. Fill the form with your technical data.
+1. You can choose several **Categories** and all the **Technologies** that you want.
+1. Wait for the approval process.
 
 # Roadmap
 - [x] V0.1-alpha - "The Cosmic Red" Refine the Add user issue template and store in database.
