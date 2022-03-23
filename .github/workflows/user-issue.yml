@@ -35,4 +35,4 @@ jobs:
          Error message: '${{fromJSON(steps.issuePost.outputs.response).message}}'
          
     - name: Show Response
-      run: echo '${{fromJSON(steps.issuePost.outputs.response).code}} ---- ${{ toJSON(steps.issuePost.outputs.response) }}'
+      run: echo '${{fromJSON(steps.issuePost.outputs.response).code}} ---- ${{ toJSON(steps.issuePost) }}'
