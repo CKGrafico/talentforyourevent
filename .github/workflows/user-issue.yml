@@ -24,6 +24,7 @@ jobs:
         method: 'POST'
         escapeData: 'true'
         data: '{"id":"${{github.event.issue.id}}","title":"${{github.event.issue.title}}","body":"${{github.event.issue.body}}","user":"${{github.event.issue.user.login}}"}'
+        
     - name: Reply to Issue if Error
       if: ${{ fromJSON(steps.issuePost.outputs.response).code != 'OK' }}
       uses: peter-evans/create-or-update-comment@v2
@@ -33,6 +34,12 @@ jobs:
          There was an error processing your request :(
          Error code: '${{fromJSON(steps.issuePost.outputs.response).code}}'
          Error message: '${{fromJSON(steps.issuePost.outputs.response).message}}'
+    - name: initial labeling
+      if: ${{ fromJSON(steps.issuePost.outputs.response).code != 'OK' }}
+      uses: andymckay/labeler@master
+      with:
+        add-labels: "Draft"         
+         
     - name: Reply to Issue if Success
       if: ${{ fromJSON(steps.issuePost.outputs.response).code == 'OK' }}
       uses: peter-evans/create-or-update-comment@v2
