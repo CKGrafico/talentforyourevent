@@ -31,8 +31,5 @@ jobs:
         issue-number: ${{ github.event.issue.number }}
         body: |
          There was an error processing your request :(
-         Error code: '${{steps.issuePost.outputs.response.code}}'
-         Error message: '${{steps.issuePost.outputs.response.message}}'
-
-    - name: Show Response
-      run: echo '${{fromJSON(steps.issuePost.outputs.response).code}} ${{ toJSON(steps.issuePost.outputs.response) }}'
+         Error code: '${{fromJSON(steps.issuePost.outputs.response).code}}'
+         Error message: '${{fromJSON(steps.issuePost.outputs.response).message}}'
