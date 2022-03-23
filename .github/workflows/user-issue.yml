@@ -25,4 +25,4 @@ jobs:
         escapeData: 'true'
         data: '{"id":"${{github.event.issue.id}}","title":"${{github.event.issue.title}}","body":"${{github.event.issue.body}}","user":"${{github.event.issue.user.login}}"}'
     - name: Show Response
-      run: eval 'printf "%s\n" {{ steps.issuePost.outputs }}'
+      run: echo '${{ toJSON(steps.issuePost.outputs) }}'
