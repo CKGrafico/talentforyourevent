@@ -17,7 +17,6 @@ jobs:
         echo this is an issue of type user and its not a draft, we can proceed
     - name: Deploy Issue
       id: issuePost
-      continue-on-error: true
       uses: fjogeleit/http-request-action@v1
       with:
         url: ${{ secrets.USER_ISSUE_POST_URL }}
