@@ -16,7 +16,7 @@ You can only register **yourself** and this should be creating an issue, we have
 
 # Roadmap
 - [x] V0.1-alpha - "The Cosmic Red" Refine the Add user issue template and store in database.
-- [ ] V0.5-beta - "The Innerce Circle" Add small group of beta testers to the repo to be able to create their issues.
+- [X] V0.5-beta - "The Inner Circle" Add small group of beta testers to the repo to be able to create their issues.
 - [ ] V1.0-beta - "Fill it" Add more people to be able to fill the database.
 - [ ] V1.5-beta - "To the moon" Public repository and anyone that feels underrepresented in our industry can join.
 - [ ] V2        - "We are live" Release the public website in Spanish.
