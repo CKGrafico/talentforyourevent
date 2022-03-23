@@ -58,7 +58,11 @@ Once you finish filling the form, please add a comment and we will remove the **
 - [ ] TypeScript
 - [ ] Layout
 </details>
-
+<details>
+  <summary>Danger Zone</summary>
+  
+- [ ] Hide my account
+</details>
 
 # ...
 
