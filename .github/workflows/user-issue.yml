@@ -33,3 +33,6 @@ jobs:
          There was an error processing your request :(
          Error code: '${{steps.issuePost.outputs.response.code}}'
          Error message: '${{steps.issuePost.outputs.response.message}}'
+
+    - name: Show Response
+      run: echo '${{fromJSON(steps.issuePost.outputs.response).code}} ${{ toJSON(steps.issuePost.outputs.response) }}'
