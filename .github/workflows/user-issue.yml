@@ -38,7 +38,8 @@ jobs:
       if: ${{ fromJSON(steps.issuePost.outputs.response).code != 'OK' }}
       uses: andymckay/labeler@master
       with:
-        add-labels: "Draft"         
+        add-labels: "Draft"
+        remove-labels: "Published"
          
     - name: Reply to Issue if Success
       if: ${{ fromJSON(steps.issuePost.outputs.response).code == 'OK' }}
@@ -47,8 +48,8 @@ jobs:
         issue-number: ${{ github.event.issue.number }}
         body: |
          The user was succesfully created or updated, edit the original issue to update the user again.
-    - name: Close the issue if everything was good
+    - name: Move Issue to Published if Success
       if: ${{ fromJSON(steps.issuePost.outputs.response).code == 'OK' }}
-      uses: peter-evans/close-issue@v2
+      uses: andymckay/labeler@master
       with:
-        issue-number: ${{ github.event.issue.number }}
+        add-labels: "Published"  
