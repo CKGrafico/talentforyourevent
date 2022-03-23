@@ -25,15 +25,16 @@ Once you finish filling the form, please add a comment and we will remove the **
 - [ ] Online
 
 #### Categories
+- [ ] Agile
 - [ ] Backend
+- [ ] Cloud
+- [ ] Devops
 - [ ] Frontend
+- [ ] IoT
+- [ ] Security
 - [ ] User Experience
 - [ ] User Interface
-- [ ] Agile
-- [ ] Cloud
-- [ ] Security
-- [ ] Devops
-- [ ] IoT
+- [ ] Videogames
 
 #### Technologies
 <details>
@@ -44,19 +45,20 @@ Once you finish filling the form, please add a comment and we will remove the **
 - [ ] PHP
 </details>
 <details>
-  <summary>Frontend</summary>
-  
-- [ ] JavaScript
-- [ ] TypeScript
-- [ ] Layout
-</details>
-<details>
   <summary>Cloud</summary>
   
 - [ ] AWS
 - [ ] Google Cloud
 - [ ] Azure
 </details>
+<details>
+  <summary>Frontend</summary>
+  
+- [ ] JavaScript
+- [ ] TypeScript
+- [ ] Layout
+</details>
+
 
 # ...
 
