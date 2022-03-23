@@ -17,11 +17,11 @@ jobs:
         echo this is an issue of type user, we can continue
 
     - name: Move Issue to Draft
-      if: ${{ fromJSON(steps.issuePost.outputs.response).code != 'OK' }}
       uses: andymckay/labeler@master
       with:
         add-labels: "Draft"
         remove-labels: "Published"
+
     - name: Reply to Issue
       uses: peter-evans/create-or-update-comment@v2
       with:
