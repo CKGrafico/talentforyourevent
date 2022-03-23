@@ -30,11 +30,6 @@ jobs:
       with:
         issue-number: ${{ github.event.issue.number }}
         body: |
-          This comment was written by a bot!
-        reactions: rocket
-      
-      
-      
-      
-    - name: Show Response
-      run: echo '${{steps.issuePost.outputs.response.code}} ${{ toJSON(steps.issuePost.outputs.response) }}'
+         There was an error processing your request :(
+         Error code: '${{steps.issuePost.outputs.response.code}}'
+         Error message: '${{steps.issuePost.outputs.response.message}}'
