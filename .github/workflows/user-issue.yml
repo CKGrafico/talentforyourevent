@@ -34,7 +34,7 @@ jobs:
          There was an error processing your request :(
          Error code: '${{fromJSON(steps.issuePost.outputs.response).code}}'
          Error message: '${{fromJSON(steps.issuePost.outputs.response).message}}'
-    - name: initial labeling
+    - name: Move Issue to Draft if Error
       if: ${{ fromJSON(steps.issuePost.outputs.response).code != 'OK' }}
       uses: andymckay/labeler@master
       with:
@@ -47,3 +47,8 @@ jobs:
         issue-number: ${{ github.event.issue.number }}
         body: |
          The user was succesfully created or updated, edit the original issue to update the user again.
+    - name: Close the issue if everything was good
+      if: ${{ fromJSON(steps.issuePost.outputs.response).code == 'OK' }}
+      uses: peter-evans/close-issue@v2
+      with:
+        issue-number: ${{ github.event.issue.number }}
