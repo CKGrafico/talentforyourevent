@@ -1,4 +1,4 @@
-name: User Issue
+name: User Issue Create or Update
 
 on:
   issues:
