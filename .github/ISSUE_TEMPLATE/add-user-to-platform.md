@@ -66,4 +66,4 @@ Once you finish filling the form, please add a comment and we will remove the **
 
 # ...
 
-- [ ]  Checking this checkbox I confirm that I feel my profile as an underrepresented profile in tech industry (Beta opened onyl if this checkbox is checked)
+- [ ]  Checking this checkbox I confirm that I feel my profile as an underrepresented profile in tech industry (Beta opened only if this checkbox is checked)
