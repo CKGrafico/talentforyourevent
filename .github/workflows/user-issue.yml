@@ -24,8 +24,8 @@ jobs:
         method: 'POST'
         escapeData: 'true'
         data: '{"id":"${{github.event.issue.id}}","title":"${{github.event.issue.title}}","body":"${{github.event.issue.body}}","user":"${{github.event.issue.user.login}}"}'
-    - name: Reply to Issue
-      if: ${{ steps.issuePost.outputs.response.code != 'OK' }}
+    - name: Reply to Issue if Error
+      if: ${{ fromJSON(steps.issuePost.outputs.response).code != 'OK' }}
       uses: peter-evans/create-or-update-comment@v2
       with:
         issue-number: ${{ github.event.issue.number }}
@@ -33,6 +33,10 @@ jobs:
          There was an error processing your request :(
          Error code: '${{fromJSON(steps.issuePost.outputs.response).code}}'
          Error message: '${{fromJSON(steps.issuePost.outputs.response).message}}'
-         
-    - name: Show Response
-      run: echo '${{fromJSON(steps.issuePost.outputs.response).code}} ---- ${{ toJSON(steps.issuePost) }}'
+    - name: Reply to Issue if Success
+      if: ${{ fromJSON(steps.issuePost.outputs.response).code == 'OK' }}
+      uses: peter-evans/create-or-update-comment@v2
+      with:
+        issue-number: ${{ github.event.issue.number }}
+        body: |
+         The user was succesfully created or updated, edit the original issue to update the user again.
