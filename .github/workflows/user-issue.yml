@@ -25,4 +25,4 @@ jobs:
         escapeData: 'true'
         data: '{"id":"${{github.event.issue.id}}","title":"${{github.event.issue.title}}","body":"${{github.event.issue.body}}","user":"${{github.event.issue.user.login}}"}'
     - name: Show Response
-      run: echo ${{ steps.issuePost.outputs.response }}
+      run: echo ${{ steps.issuePost.outputs.response }} ${{ steps.issuePost.outputs.response.error_code }}
