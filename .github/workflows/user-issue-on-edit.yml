@@ -1,1 +1,30 @@
 
+name: User Issue on Edit Issue
+
+on:
+  issues:
+    types: [edited]
+
+jobs:
+  user_isue_check_labels:
+    runs-on: ubuntu-latest
+    steps:
+    - name: if_issue
+      if: |
+        github.event.issue &&
+        contains(github.event.issue.labels.*.name, 'User')
+      run: |
+        echo this is an issue of type user, we can continue
+
+    - name: Move Issue to Draft
+      if: ${{ fromJSON(steps.issuePost.outputs.response).code != 'OK' }}
+      uses: andymckay/labeler@master
+      with:
+        add-labels: "Draft"
+        remove-labels: "Published"
+    - name: Reply to Issue
+      uses: peter-evans/create-or-update-comment@v2
+      with:
+        issue-number: ${{ github.event.issue.number }}
+        body: |
+         As you have edited the original Issue, it has moved to Draft mode, it will be reviewed soon.
