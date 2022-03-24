@@ -1,4 +1,11 @@
-# Talent For Your Event
+<a id="logos" class="anchor" aria-hidden="true" href="#logos"></a><br/>
+
+<h1 align="center">
+  <p align="center">Talent For Your Event</p>
+  <a href="#><img src="https://raw.githubusercontent.com/CKGrafico/talentforyourevent/main/branding/logo.svg"  width="150" alt="Logo"></a>
+</h1>
+
+### Overview
 A webapp that will help you to find talent to collaborate as speaker in your event, the data is anonymized and this will help you to focus in the tech and not in who is using this tech. This is not a directory, the tool will help you to find the most accurate people for your search, will randomly sort them and show you 5 to choose.
 
 Nowadays is not an excuse to don't have secure and equal spaces in events, but this can be a first tool to help you to start to meet more people outside your circle and follow and offer them to participate in your event. Don't judge them for the aspcet or gender, just check their talents.
