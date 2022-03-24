@@ -2,7 +2,7 @@
 
 <h1 align="center">
   <p align="center">Talent For Your Event</p>
-  <a href="#><img src="https://raw.githubusercontent.com/CKGrafico/talentforyourevent/main/branding/logo.svg"  width="150" alt="Logo"></a>
+  <a href="#><img src="https://raw.githubusercontent.com/CKGrafico/talentforyourevent/main/branding/logo.png"  width="150" alt="Logo"></a>
 </h1>
 
 ### Overview
