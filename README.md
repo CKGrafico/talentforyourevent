@@ -1,8 +1,8 @@
 <a id="logos" class="anchor" aria-hidden="true" href="#logos"></a><br/>
 
 <h1 align="center">
-  <p align="center">Talent For Your Event</p>
-  <a href="#><img src="https://raw.githubusercontent.com/CKGrafico/talentforyourevent/main/branding/logo.png"  width="150" alt="Logo"></a>
+  <a href="https://raw.githubusercontent.com/CKGrafico/talentforyourevent/main/branding/logo.png"><img src="https://i.imgur.com/eJpPeOB.png"  width="150" alt="Logo"></a>
+    <p align="center">Talent For Your Event</p>
 </h1>
 
 ### Overview
