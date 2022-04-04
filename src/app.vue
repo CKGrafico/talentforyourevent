@@ -10,6 +10,11 @@ useMeta({
 });
 </script>
 
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600&display=swap');
+</style>
+>
+
 <template>
   <AppContainer>
     <h1 class="text-4xl flex items-center gap-2">

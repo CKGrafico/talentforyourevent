@@ -21,9 +21,9 @@ $time: (
 );
 
 $font-weight: (
-  light: 200,
-  semilight: 300,
-  normal: 500,
+  thin: 100,
+  light: 300,
+  normal: 400,
   semibold: 600,
   bold: 700,
   black: 800
