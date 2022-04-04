@@ -1,11 +1,14 @@
 <script setup>
+import { githubLogout } from '#imports';
+
 defineProps({
   user: {
     type: Object,
-    required: true,
-  },
-})
-const logout = githubLogout
+    required: true
+  }
+});
+
+const logout = githubLogout;
 </script>
 
 <template>
@@ -15,11 +18,6 @@ const logout = githubLogout
       Welcome <strong>{{ user.login }}</strong
       >, nice to meet you!
     </p>
-    <button
-      @click="logout"
-      class="border text-black border-gray-600 rounded px-2 hover:border-black"
-    >
-      Logout
-    </button>
+    <button @click="logout" class="border text-black border-gray-600 rounded px-2 hover:border-black">Logout</button>
   </div>
 </template>

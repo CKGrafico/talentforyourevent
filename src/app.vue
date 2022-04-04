@@ -1,4 +1,6 @@
 <script setup>
+import { githubLogin } from '#imports';
+
 const login = githubLogin;
 const user = await useGithubUser();
 
