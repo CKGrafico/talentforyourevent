@@ -1,5 +1,6 @@
 <script setup>
 import { githubLogin } from '#imports';
+import '~/styles/app.css';
 
 const login = githubLogin;
 const user = await useGithubUser();
