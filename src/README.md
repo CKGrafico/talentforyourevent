@@ -7,7 +7,7 @@ We are using [Nuxt 3](https://v3.nuxtjs.org) with GitHub authentication.
 Make sure to install the dependencies
 
 ```bash
-yarn install
+npm install
 ```
 
 And copy the `.env.example` to `.env`
@@ -23,18 +23,22 @@ cp .env.example .env
 - Homepage URL: http://localhost:3000
 - Authorization callback URL: http://localhost:3000/api/github/callback
 
-Fill your `.env` with `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` variables .
+Fill your `.env` with `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` variables.
 
 ### Database
 
-In progress...
+Fill your `.env` with `DATABASE_URL` variable with a connection string like `"sqlserver://_____.database.windows.net:1433;database=_____;user=_____;password=_____;encrypt=true"`.
+
+```bash
+npx prisma db push
+```
 
 ## Development
 
 Start the development server on http://localhost:3000
 
 ```bash
-yarn dev
+npm run dev
 ```
 
 ## Production
@@ -42,5 +46,5 @@ yarn dev
 Build the application for production:
 
 ```bash
-yarn build
+npm run build
 ```
