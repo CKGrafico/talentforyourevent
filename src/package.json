@@ -5,7 +5,7 @@
     "dev": "nuxi dev",
     "build": "nuxi build",
     "start": "node .output/server/index.mjs",
-    "lint": "npm run lint:scripts && npm run lint:editor",
+    "lint": "yarn lint:scripts && yarn lint:editor",
     "lint:scripts": "eslint --fix src --ext .js,.jsx",
     "lint:editor": "eclint fix"
   },
@@ -41,6 +41,7 @@
     "typescript": "^4.6.3"
   },
   "dependencies": {
+    "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge",
     "@prisma/client": "^3.11.1",
     "pinia": "^2.0.13",
     "vue": "^3.2.25"

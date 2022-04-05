@@ -1,6 +1,13 @@
+import fs from 'fs';
 import { defineNuxtConfig } from 'nuxt3';
+
 const stylePostFunctions = require('./styles/functions/post-functions.js');
 const stylePreFunctions = require('./styles/functions/pre-functions.js');
+
+// https://github.com/nuxt-community/i18n-module/issues/1416
+const locales = fs.readdirSync('locales').map((file) => {
+  return { code: file.replace('.json', ''), file: file };
+});
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
@@ -10,6 +17,7 @@ export default defineNuxtConfig({
   },
   css: ['~/styles/app.css'],
   buildModules: ['@vueuse/nuxt', '@pinia/nuxt'],
+  modules: ['@nuxtjs/i18n'],
   build: {
     postcss: {
       postcssOptions: {
@@ -34,5 +42,14 @@ export default defineNuxtConfig({
   },
   vueuse: {
     ssrHandlers: true
+  },
+  i18n: {
+    locales: locales,
+    defaultLocale: 'en',
+    langDir: 'locales',
+    vueI18n: {
+      locale: process.env.VUE_APP_I18N_LOCALE || 'en',
+      fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en'
+    }
   }
 });

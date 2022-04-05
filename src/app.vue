@@ -17,6 +17,7 @@ useMeta({
 
 <template>
   <AppContainer>
+    {{ $t('message.hello', ['1']) }}
     <User v-if="user" :user="user" />
     <button v-else @click="login">Login with GitHub</button>
   </AppContainer>

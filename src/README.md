@@ -7,7 +7,7 @@ We are using [Nuxt 3](https://v3.nuxtjs.org) with GitHub authentication.
 Make sure to install the dependencies
 
 ```bash
-npm install
+yarn install
 ```
 
 And copy the `.env.example` to `.env`
@@ -38,7 +38,7 @@ npx prisma db push
 Start the development server on http://localhost:3000
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 ## Production
@@ -46,5 +46,5 @@ npm run dev
 Build the application for production:
 
 ```bash
-npm run build
+yarn build
 ```
