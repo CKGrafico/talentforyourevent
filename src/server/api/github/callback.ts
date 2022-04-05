@@ -20,5 +20,5 @@ export default async (req, res) => {
 
   setCookie(res, 'gh_token', response.access_token, { path: '/' });
 
-  return sendRedirect(res, '/wizzard');
+  return sendRedirect(res, '/wizard');
 };
