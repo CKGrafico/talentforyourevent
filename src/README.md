@@ -33,6 +33,10 @@ Fill your `.env` with `DATABASE_URL` variable with a connection string like `"sq
 npx prisma db push
 ```
 
+```bash
+npx prisma db seed
+```
+
 ## Development
 
 Start the development server on http://localhost:3000
