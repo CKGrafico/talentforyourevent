@@ -3,9 +3,9 @@ const { PrismaClient } = prismaClient;
 
 export default async (req, res) => {
   const prisma = new PrismaClient();
-  const events = await prisma.eventType.findMany();
+  const categories = await prisma.category.findMany();
 
   await prisma.$disconnect();
 
-  return events;
+  return categories;
 };
