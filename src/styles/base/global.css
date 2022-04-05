@@ -5,7 +5,8 @@
 
 html,
 body {
-  color: value($color-basic, darkest);
+  background-color: value($color-primary, darkest);
+  color: value($color-basic, brightest);
   font-family: 'Montserrat', sans-serif;
   font-size: calc($default-font-size * 0.65);
   height: 100%;

@@ -1,5 +1,5 @@
 {
-  "message": {
-    "hello": "{0} mundo"
+  "header": {
+    "logout": "Clica para cerrar sesión"
   }
 }

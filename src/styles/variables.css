@@ -11,7 +11,14 @@ $color-basic: (
 );
 
 $color-primary: (
-  normal: #00ff00
+  brightest: #eff8e6,
+  brighter: #dafdba,
+  bright: #9aeba3,
+  normal: #45c4b0,
+  dark: #2a7e71,
+  semidarker: #0f6155,
+  darker: #13678a,
+  darkest: #012030
 );
 
 $time: (

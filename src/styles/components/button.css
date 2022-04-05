@@ -1,0 +1,47 @@
+@define-mixin button ##background, ##foreground {
+  background-color: ##background;
+  border-radius: 100px;
+  box-shadow: rgba(##background, 0.2) 0 -25px 18px -14px inset, rgba(##background, 0.15) 0 1px 2px,
+    rgba(##background, 0.15) 0 2px 4px, rgba(##background, 0.15) 0 4px 8px, rgba(##background, 0.15) 0 8px 16px,
+    rgba(##background, 0.15) 0 16px 32px;
+  color: ##foreground;
+
+  @mixin-content;
+}
+
+.button {
+  @mixin button value($color-basic, bright), color-mod(value($color-basic, bright) blackness(70%));
+
+  cursor: pointer;
+  display: inline-block;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  border: 0;
+  user-select: none;
+  touch-action: manipulation;
+
+  &--primary {
+    @mixin button value($color-primary, normal), value($color-primary, semidarker);
+  }
+
+  &--primary-dark {
+    @mixin button value($color-primary, dark), color-mod(value($color-primary, dark) blackness(70%));
+  }
+
+  &--primary-darker {
+    @mixin button value($color-primary, darker), color-mod(value($color-primary, darker) lightness(80%));
+  }
+
+  &--primary-darkest {
+    @mixin button value($color-primary, darkest), color-mod(value($color-primary, darkest) lightness(80%));
+  }
+
+  &--primary-bright {
+    @mixin button value($color-primary, bright), color-mod(value($color-primary, normal) blackness(70%));
+  }
+
+  &--primary-brighter {
+    @mixin button value($color-primary, brighter), color-mod(value($color-primary, normal) blackness(50%));
+  }
+}

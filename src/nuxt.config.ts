@@ -15,7 +15,6 @@ export default defineNuxtConfig({
     GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
     DATABASE_URL: process.env.DATABASE_URL
   },
-  css: ['~/styles/app.css'],
   buildModules: ['@vueuse/nuxt', '@pinia/nuxt'],
   modules: ['@nuxtjs/i18n'],
   build: {
@@ -32,6 +31,7 @@ export default defineNuxtConfig({
           'postcss-each': {},
           'postcss-calc': {},
           'postcss-hexrgba': {},
+          'postcss-color-mod-function': {},
           'postcss-fontpath': {},
           'postcss-nested': {},
           autoprefixer: {},
@@ -45,11 +45,11 @@ export default defineNuxtConfig({
   },
   i18n: {
     locales: locales,
-    defaultLocale: 'en',
+    defaultLocale: 'es',
     langDir: 'locales',
     vueI18n: {
-      locale: process.env.VUE_APP_I18N_LOCALE || 'en',
-      fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en'
+      locale: process.env.VUE_APP_I18N_LOCALE || 'es',
+      fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'es'
     }
   }
 });

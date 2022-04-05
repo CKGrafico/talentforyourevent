@@ -1,6 +1,5 @@
 <script setup>
 import { githubLogin } from '#imports';
-import '~/styles/app.css';
 
 const login = githubLogin;
 const user = await useGithubUser();
@@ -9,15 +8,14 @@ const user = await useGithubUser();
 useMeta({
   // title: t('message.hello', { msg: '1' })
 });
+
+function onClickLogin() {
+  login();
+}
 </script>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600&display=swap');
-</style>
-
 <template>
-  <main>
-    <Header />
-    <NuxtPage />
-  </main>
+  <div style="padding: 2rem">
+    <button class="button button--primary" v-if="!user" @click="onClickLogin">Login with GitHub</button>
+  </div>
 </template>
