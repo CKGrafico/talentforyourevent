@@ -62,9 +62,11 @@ Once you finish filling the form, please add a comment and we will remove the **
 <details>
   <summary>Mobile</summary>
   
-- [ ] Swift
-- [ ] Kotlin
 - [ ] Flutter
+- [ ] Kotlin
+- [ ] React Native
+- [ ] Swift
+- [ ] Xamarin
 </details>
 <details>
   <summary>Danger Zone</summary>
