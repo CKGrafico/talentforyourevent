@@ -34,3 +34,9 @@ export const githubLogout = async () => {
   useState('gh_user').value = null;
   navigateTo('/');
 };
+
+export function checkIfUserIsLogged(user) {
+  if (!user?.value) {
+    navigateTo('/');
+  }
+}
