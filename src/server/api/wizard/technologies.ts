@@ -5,14 +5,15 @@ const { PrismaClient } = prismaClient;
 export default async (req, res) => {
   const query = useQuery(req);
 
-  if (!query.category) {
+  if (!query['categories[]']) {
     return [];
   }
 
+  // Number(query.category.toString())
   const prisma = new PrismaClient();
   const technologies = await prisma.technology.findMany({
     where: {
-      categoryId: Number(query.category.toString())
+      categoryId: { in: [...new Set(query['categories[]'])].map((x) => Number(x.toString())) }
     }
   });
 

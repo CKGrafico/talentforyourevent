@@ -7,11 +7,12 @@ function onClickOption(option) {
   wizardStore.addEvent(option);
 }
 
-const { data } = await useFetch('/api/wizard/event-types');
+// qs.stringify({ categories: [1,2,3] }, { arrayFormat: 'brackets' })
+const { eventTypes: data } = await useFetch('/api/wizard/event-types');
 </script>
 
 <template>
   <div>
-    <span @click="onClickOption"> {{ data }} </span>
+    <span @click="onClickOption"> {{ eventTypes }} </span>
   </div>
 </template>
