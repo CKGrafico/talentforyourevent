@@ -23,7 +23,7 @@ export default defineNuxtConfig({
         plugins: {
           'postcss-import': {},
           'postcss-functions': { functions: stylePreFunctions },
-          'postcss-at-rules-variables': { atRules: ['each', 'mixin', 'media'] },
+          'postcss-at-rules-variables': { atRules: ['each', 'mixin', 'media', 'for'] },
           'postcss-simple-vars': {},
           'postcss-replace': { pattern: /##/g, data: { replaceAll: '$' } },
           'postcss-mixins': {},

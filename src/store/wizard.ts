@@ -17,17 +17,44 @@ export const useWizardStore = defineStore({
     currentStep: WizardStep.Events
   }),
   actions: {
-    addEvent(event: number) {
+    toggleEvent(id: number) {
       this.events = this.events || [];
-      this.events.filter((x) => x !== event).push(event);
+
+      if (this.events.includes(id)) {
+        this.events = this.events.filter((x) => x !== id);
+        return;
+      }
+
+      this.events.push(id);
     },
-    addCategory(category: number) {
+    toggleCategory(id: number) {
       this.categories = this.categories || [];
-      this.categories.filter((x) => x !== category).push(category);
+
+      if (this.categories.includes(id)) {
+        this.categories = this.categories.filter((x) => x !== id);
+        return;
+      }
+
+      this.categories.push(id);
     },
-    addTechnology(technology: number) {
+    toggleTechnology(id: number) {
       this.technologies = this.technologies || [];
-      this.technologies.filter((x) => x !== technology).push(technology);
+
+      if (this.technologies.includes(id)) {
+        this.technologies = this.technologies.filter((x) => x !== id);
+        return;
+      }
+
+      this.technologies.push(id);
+    },
+    setStep(step: WizardStep) {
+      this.currentStep = step;
+    },
+    resetTechnologies() {
+      this.technologies = null;
+    },
+    resetCategories() {
+      this.categories = null;
     }
   }
 });

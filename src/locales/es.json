@@ -1,5 +1,21 @@
 {
   "header": {
     "logout": "Clica para cerrar sesión"
+  },
+  "wizard": {
+    "next": "Siguiente paso",
+    "back": "Paso anterior",
+    "event": {
+      "title": "¿Qué tipo de evento estás organizando?",
+      "subtitle": "Puedes encontrar speakers de eventos online, onsite o ambos."
+    },
+    "category": {
+      "title": "¿Qué categorías representan la esencia de este evento?",
+      "subtitle": "Selecciona hasta 3 categorías distintas para encontrar speakers."
+    },
+    "technology": {
+      "title": "¿Qué tecnologías te gustaría ver durante el evento?",
+      "subtitle": "Puedes seleccionar hasta 5 tecnologías de forma opcional."
+    }
   }
 }
