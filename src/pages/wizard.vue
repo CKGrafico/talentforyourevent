@@ -60,7 +60,7 @@ checkIfUserIsLogged(user);
 </style>
 
 <template>
-  <div class="wizard">
+  <div v-if="user" class="wizard">
     <WizardStepEvent v-if="wizardStore.currentStep === WizardStep.Events" />
     <WizardStepCategory v-if="wizardStore.currentStep === WizardStep.Categories" />
     <WizardStepTechnology v-if="wizardStore.currentStep === WizardStep.Technologies" />
