@@ -1,6 +1,5 @@
 <script setup>
 import { getWizardTechnologies, wizardTechnologies } from '#imports';
-import Tilt from 'vanilla-tilt-vue';
 import { randomColor } from '~/helpers';
 import { WizardStep } from '~/models/wizard';
 import { useWizardStore } from '~/store/wizard';
@@ -40,18 +39,14 @@ await getWizardTechnologies(wizardStore.categories);
     <h1 class="wizard__title">{{ $t('wizard.category.title') }}</h1>
     <h2 class="wizard__subtitle">{{ $t('wizard.category.subtitle') }}</h2>
     <div class="wizard__options">
-      <Tilt
-        :class="`wizard__option ${isSelected(id) ? 'is-selected' : ''}`"
-        v-for="({ id, name }, index) in technologies.value"
+      <WizardOption
+        v-for="{ id, name } in technologies.value"
+        :name="name"
+        :id="id"
         :key="id"
+        :is-selected="isSelected(id)"
         @click="onClickOption(id)"
-        :style="{
-          '--background': getColor(index).background,
-          '--foreground': getColor(index).foreground
-        }"
-      >
-        {{ name }}
-      </Tilt>
+      />
     </div>
 
     <div class="wizard__actions">

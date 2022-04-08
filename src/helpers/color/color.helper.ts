@@ -33,10 +33,9 @@ export function randomColor(
   value: string,
   alpha = 1,
   hue = [0, 360],
-  lit = [45, 65]
+  lit = [40, 70],
+  sat = [75, 90]
 ): { foreground: string; background: string } {
-  const sat = [80, 90];
-
   const range = function (hash, min, max) {
     const diff = max - min;
     const x = ((hash % diff) + diff) % diff;
@@ -58,7 +57,7 @@ export function randomColor(
   const l = range(hash, lit[0], lit[1]);
 
   return {
-    foreground: hsl2rgba(h, s, l * 0.75, 1),
-    background: hsl2rgba(h, s, l * 1.1, alpha)
+    foreground: hsl2rgba(h, s, l * 0.5, 1),
+    background: hsl2rgba(h, s, l * 0.9, alpha)
   };
 }

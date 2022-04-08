@@ -1,7 +1,5 @@
 <script setup>
 import { getEventTypes, wizardEventTypes } from '#imports';
-import Tilt from 'vanilla-tilt-vue';
-import { randomColor } from '~/helpers';
 import { WizardStep } from '~/models/wizard';
 import { useWizardStore } from '~/store/wizard';
 
@@ -9,11 +7,6 @@ const wizardStore = useWizardStore();
 const eventTypes = wizardEventTypes;
 
 const MIN_TO_SEND = 1;
-
-function getColor(value) {
-  const hue = [198, 200];
-  return randomColor(value, 1, hue);
-}
 
 function isSelected(id) {
   return wizardStore.events?.includes(id);
@@ -35,15 +28,14 @@ await getEventTypes();
     <h1 class="wizard__title">{{ $t('wizard.event.title') }}</h1>
     <h2 class="wizard__subtitle">{{ $t('wizard.event.subtitle') }}</h2>
     <div class="wizard__options">
-      <Tilt
-        :class="`wizard__option ${isSelected(id) ? 'is-selected' : ''}`"
+      <WizardOption
         v-for="{ id, name } in eventTypes.value"
+        :name="name"
+        :id="id"
         :key="id"
+        :is-selected="isSelected(id)"
         @click="onClickOption(id)"
-        :style="{ '--background': getColor(name).background, '--foreground': getColor(name).foreground }"
-      >
-        {{ name }}
-      </Tilt>
+      />
     </div>
 
     <div class="wizard__actions">
