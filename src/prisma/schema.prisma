@@ -25,6 +25,7 @@ model EventType {
   id    Int    @id @default(autoincrement())
   name  String @unique @db.VarChar(255)
   users User[]
+  icon String  @db.VarChar(255)
 }
 
 model Category {
@@ -32,6 +33,7 @@ model Category {
   name       String       @unique @db.VarChar(255)
   users      User[]
   Technology Technology[]
+  icon String  @db.VarChar(255)
 }
 
 model Technology {
@@ -40,4 +42,5 @@ model Technology {
   users      User[]
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId Int
+  icon String  @db.VarChar(255)
 }

@@ -2,13 +2,17 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function main() {
-  const events = ['Onsite', 'Online'];
+  const events = [
+    { name: 'Onsite', icon: '' },
+    { name: 'Online', icon: '' }
+  ];
   const eventsUpserts = events.map((event) =>
     prisma.eventType.upsert({
-      where: { name: event },
+      where: { name: event.name },
       update: {},
       create: {
-        name: event
+        name: event.name,
+        icon: event.icon
       }
     })
   );
@@ -16,24 +20,25 @@ async function main() {
   await Promise.all(eventsUpserts);
 
   const categories = [
-    'Agile',
-    'Backend',
-    'Cloud',
-    'Devops',
-    'Frontend',
-    'IoT',
-    'Mobile',
-    'Security',
-    'User Experience',
-    'User Interface',
-    'Videogames'
+    { name: 'Agile', icon: '' },
+    { name: 'Backend', icon: '' },
+    { name: 'Cloud', icon: '' },
+    { name: 'Devops', icon: '' },
+    { name: 'Frontend', icon: '' },
+    { name: 'IoT', icon: '' },
+    { name: 'Mobile', icon: '' },
+    { name: 'Security', icon: '' },
+    { name: 'User Experience', icon: '' },
+    { name: 'User Interface', icon: '' },
+    { name: 'Videogames', icon: '' }
   ];
   const categoriesUpserts = categories.map((category) =>
     prisma.category.upsert({
-      where: { name: category },
+      where: { name: category.name },
       update: {},
       create: {
-        name: category
+        name: category.name,
+        icon: category.icon
       }
     })
   );
@@ -46,11 +51,28 @@ async function main() {
     },
     {
       category: 'Backend',
-      technologies: ['Java', '.Net', 'PHP']
+      technologies: [
+        {
+          name: 'Java',
+          icon: ''
+        },
+        {
+          name: '.Net',
+          icon: ''
+        },
+        {
+          name: 'PHP',
+          icon: ''
+        }
+      ]
     },
     {
       category: 'Cloud',
-      technologies: ['AWS', , 'Azure', 'Google Cloud']
+      technologies: [
+        { name: 'AWS', icon: '' },
+        { name: 'Azure', icon: '' },
+        { name: 'Google Cloud', icon: '' }
+      ]
     },
     {
       category: 'Devops',
@@ -58,7 +80,11 @@ async function main() {
     },
     {
       category: 'Frontend',
-      technologies: ['JavaScript', 'TypeScript', 'Layout']
+      technologies: [
+        { name: 'JavaScript', icon: '' },
+        { name: 'TypeScript', icon: '' },
+        { name: 'Layout', icon: '' }
+      ]
     },
     {
       category: 'IoT',
@@ -66,7 +92,13 @@ async function main() {
     },
     {
       category: 'Mobile',
-      technologies: ['Flutter', 'Kotlin', 'React Native', 'Swift', 'Xamarin']
+      technologies: [
+        { name: 'Flutter', icon: '' },
+        { name: 'Kotlin', icon: '' },
+        { name: 'React Native', icon: '' },
+        { name: 'Swift', icon: '' },
+        { name: 'Xamarin', icon: '' }
+      ]
     },
     {
       category: 'Security',
@@ -82,16 +114,22 @@ async function main() {
     },
     {
       category: 'Videogames',
-      technologies: []
+      technologies: [
+        { name: 'Godot', icon: '' },
+        { name: 'PhaserJS', icon: '' },
+        { name: 'Unity', icon: '' },
+        { name: 'Unreal Engine', icon: '' }
+      ]
     }
   ];
   const technologiesUpserts = technologies.map((category) =>
     category.technologies.map((technology) =>
       prisma.technology.upsert({
-        where: { name: technology },
+        where: { name: technology.name },
         update: {},
         create: {
-          name: technology,
+          name: technology.name,
+          icon: technology.icon,
           categoryId: insertedCategories.find((insertedCategory) => category.category === insertedCategory.name).id
         }
       })
