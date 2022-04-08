@@ -29,9 +29,10 @@ await getEventTypes();
     <h2 class="wizard__subtitle">{{ $t('wizard.event.subtitle') }}</h2>
     <div class="wizard__options">
       <WizardOption
-        v-for="{ id, name } in eventTypes.value"
+        v-for="{ id, name, icon } in eventTypes.value"
         :name="name"
         :id="id"
+        :icon="icon"
         :key="id"
         :is-selected="isSelected(id)"
         @click="onClickOption(id)"

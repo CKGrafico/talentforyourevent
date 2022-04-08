@@ -40,9 +40,10 @@ await getWizardCategories();
     <h2 class="wizard__subtitle">{{ $t('wizard.category.subtitle') }}</h2>
     <div class="wizard__options">
       <WizardOption
-        v-for="{ id, name } in categories.value"
+        v-for="{ id, name, icon } in categories.value"
         :name="name"
         :id="id"
+        :icon="icon"
         :key="id"
         :is-selected="isSelected(id)"
         @click="onClickOption(id)"

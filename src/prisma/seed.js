@@ -1,5 +1,8 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
+const simpleIcons = require('simple-icons');
+
+const icon = simpleIcons.Get('javascript');
 
 async function main() {
   const events = [
