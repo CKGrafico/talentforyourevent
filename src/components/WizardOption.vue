@@ -14,6 +14,10 @@ const props = defineProps({
   id: {
     type: Number,
     required: true
+  },
+  icon: {
+    type: String,
+    required: false
   }
 });
 
@@ -50,15 +54,23 @@ function getColor(value) {
   }
 
   &__icon {
-    font-size: 3rem;
+    $size: 3rem;
+
+    height: $size;
+    width: $size;
     text-align: center;
     padding-top: 0.5rem;
-    color: var(--background);
-    transition: color value($time, slow);
+
+    :deep(path) {
+      transition: fill value($time, slow);
+      fill: var(--background);
+    }
   }
 
   &.is-selected &__icon {
-    color: var(--foreground);
+    :deep(path) {
+      fill: var(--foreground);
+    }
   }
 
   &__name {
@@ -102,7 +114,7 @@ function getColor(value) {
     :key="id"
     :style="{ '--background': getColor(name).background, '--foreground': getColor(name).foreground }"
   >
-    <span class="option__icon">☺</span>
+    <span class="option__icon" v-html="icon"></span>
     <span class="option__name">{{ name }}</span>
   </Tilt>
 </template>
