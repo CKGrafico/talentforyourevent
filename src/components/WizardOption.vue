@@ -32,6 +32,7 @@ function getColor(value) {
 .option {
   $radius: 0.75rem;
 
+  align-items: center;
   background-color: value($color-basic, brightest);
   box-shadow: 0 0 0px 2px transparent;
   border-radius: $radius;
@@ -59,6 +60,7 @@ function getColor(value) {
     height: $size;
     width: $size;
     text-align: center;
+    margin-top: 0.5rem;
     padding-top: 0.5rem;
 
     :deep(path) {
@@ -80,6 +82,7 @@ function getColor(value) {
     border-radius: $radius;
     padding: 0.75rem;
     text-align: center;
+    width: 100%;
 
     &:before {
       content: '';
@@ -97,6 +100,7 @@ function getColor(value) {
 
   &.is-selected &__name {
     color: var(--foreground);
+    font-weight: value($font-weight, bold);
 
     &:before {
       width: 110%;
