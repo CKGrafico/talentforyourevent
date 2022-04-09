@@ -2,7 +2,11 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const simpleIcons = require('simple-icons');
 
-const icon = simpleIcons.Get('javascript');
+function getIcon(name) {
+  const icon = simpleIcons.Get(name.replace(/ /g, '').toLowerCase());
+
+  return icon?.svg || '';
+}
 
 async function main() {
   const events = [
@@ -12,7 +16,7 @@ async function main() {
   const eventsUpserts = events.map((event) =>
     prisma.eventType.upsert({
       where: { name: event.name },
-      update: {},
+      update: { icon: event.icon },
       create: {
         name: event.name,
         icon: event.icon
@@ -38,7 +42,9 @@ async function main() {
   const categoriesUpserts = categories.map((category) =>
     prisma.category.upsert({
       where: { name: category.name },
-      update: {},
+      update: {
+        icon: category.icon
+      },
       create: {
         name: category.name,
         icon: category.icon
@@ -57,24 +63,24 @@ async function main() {
       technologies: [
         {
           name: 'Java',
-          icon: ''
+          icon: getIcon('Java')
         },
         {
           name: '.Net',
-          icon: ''
+          icon: getIcon('dotNet')
         },
         {
           name: 'PHP',
-          icon: ''
+          icon: getIcon('PHP')
         }
       ]
     },
     {
       category: 'Cloud',
       technologies: [
-        { name: 'AWS', icon: '' },
-        { name: 'Azure', icon: '' },
-        { name: 'Google Cloud', icon: '' }
+        { name: 'AWS', icon: getIcon('Amazon AWS') },
+        { name: 'Azure', icon: getIcon('Microsoft Azure') },
+        { name: 'Google Cloud', icon: getIcon('Google Cloud') }
       ]
     },
     {
@@ -84,9 +90,9 @@ async function main() {
     {
       category: 'Frontend',
       technologies: [
-        { name: 'JavaScript', icon: '' },
-        { name: 'TypeScript', icon: '' },
-        { name: 'Layout', icon: '' }
+        { name: 'JavaScript', icon: getIcon('JavaScript') },
+        { name: 'TypeScript', icon: getIcon('TypeScript') },
+        { name: 'Layout', icon: getIcon('CSS3') }
       ]
     },
     {
@@ -96,11 +102,11 @@ async function main() {
     {
       category: 'Mobile',
       technologies: [
-        { name: 'Flutter', icon: '' },
-        { name: 'Kotlin', icon: '' },
-        { name: 'React Native', icon: '' },
-        { name: 'Swift', icon: '' },
-        { name: 'Xamarin', icon: '' }
+        { name: 'Flutter', icon: getIcon('Flutter') },
+        { name: 'Kotlin', icon: getIcon('Kotlin') },
+        { name: 'React Native', icon: getIcon('React') },
+        { name: 'Swift', icon: getIcon('Swift') },
+        { name: 'Xamarin', icon: getIcon('Xamarin') }
       ]
     },
     {
@@ -118,10 +124,10 @@ async function main() {
     {
       category: 'Videogames',
       technologies: [
-        { name: 'Godot', icon: '' },
-        { name: 'PhaserJS', icon: '' },
-        { name: 'Unity', icon: '' },
-        { name: 'Unreal Engine', icon: '' }
+        { name: 'Godot', icon: getIcon('Godot Engine') },
+        { name: 'PhaserJS', icon: getIcon('JavaScript') },
+        { name: 'Unity', icon: getIcon('Unity') },
+        { name: 'Unreal Engine', icon: getIcon('Unreal Engine') }
       ]
     }
   ];
@@ -129,7 +135,7 @@ async function main() {
     category.technologies.map((technology) =>
       prisma.technology.upsert({
         where: { name: technology.name },
-        update: {},
+        update: { icon: technology.icon },
         create: {
           name: technology.name,
           icon: technology.icon,
