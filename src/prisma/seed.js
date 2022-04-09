@@ -10,8 +10,8 @@ function getIcon(name) {
 
 async function main() {
   const events = [
-    { name: 'Onsite', icon: '' },
-    { name: 'Online', icon: '' }
+    { name: 'Onsite', icon: getIcon('Google Classroom') },
+    { name: 'Online', icon: getIcon('Google Earth') }
   ];
   const eventsUpserts = events.map((event) =>
     prisma.eventType.upsert({
@@ -27,17 +27,17 @@ async function main() {
   await Promise.all(eventsUpserts);
 
   const categories = [
-    { name: 'Agile', icon: '' },
-    { name: 'Backend', icon: '' },
-    { name: 'Cloud', icon: '' },
-    { name: 'Devops', icon: '' },
-    { name: 'Frontend', icon: '' },
-    { name: 'IoT', icon: '' },
-    { name: 'Mobile', icon: '' },
-    { name: 'Security', icon: '' },
-    { name: 'User Experience', icon: '' },
-    { name: 'User Interface', icon: '' },
-    { name: 'Videogames', icon: '' }
+    { name: 'Agile', icon: getIcon('Jira') },
+    { name: 'Backend', icon: getIcon('StackEdit') },
+    { name: 'Cloud', icon: getIcon('Cloudways') },
+    { name: 'Devops', icon: getIcon('Terraform') },
+    { name: 'Frontend', icon: getIcon('Visual Studio Code') },
+    { name: 'IoT', icon: getIcon('SmartThings') },
+    { name: 'Mobile', icon: getIcon('motorola') },
+    { name: 'Security', icon: getIcon('openvpn') },
+    { name: 'User Experience', icon: getIcon('Figma') },
+    { name: 'User Interface', icon: getIcon('Inkscape') },
+    { name: 'Videogames', icon: getIcon('Nintendo GameCube') }
   ];
   const categoriesUpserts = categories.map((category) =>
     prisma.category.upsert({
