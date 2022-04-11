@@ -1,5 +1,4 @@
 <script setup>
-import Tilt from 'vanilla-tilt-vue';
 import { randomColor } from '~/helpers';
 
 const props = defineProps({
