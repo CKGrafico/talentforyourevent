@@ -23,6 +23,7 @@ jobs:
 
       - name: install, build
         run: |
+          cd ./src
           yarn
           yarn build
 
@@ -30,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: .
+          path: ./src
 
   deploy:
     runs-on: ubuntu-latest
