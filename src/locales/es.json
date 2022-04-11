@@ -2,6 +2,18 @@
   "header": {
     "logout": "Clica para cerrar sesión"
   },
+  "home": {
+    "logo": "Logo talento para tu evento",
+    "title": "Talento para tu evento",
+    "summary": {
+      "introduction": "Una webapp que propone ayudar a encontrar talento para colaborar como speakers en los eventos, los datos están anonimizados y esto ayuda a enfocarnos en las tecnologías y no en quién está usándolas. Esta app no es un directorio, es una herramienta que va a ayudarte a encontrar a las personas indicadas para tú búsqueda, ordenando los resultados al hacer y permitiéndote ver la identidad de hasta 5 resultados.",
+      "ending": "Hoy en día no hay excusa en si un evento no es seguro e igual para todas las personas, pero esta herramienta puede ser un primer paso para ayudarte a empezar a conocer gente fuera de tu círculo cercano y ofrecerles a participar en los eventos que participes. Evitando juzgar a las personas por su aspecto o su género, solo teniendo en cuenta su talento."
+    },
+    "actions": {
+      "speaker": "Soy speaker 🎤",
+      "event": "Organizo eventos 🏟️"
+    }
+  },
   "wizard": {
     "next": "Siguiente paso",
     "back": "Paso anterior",

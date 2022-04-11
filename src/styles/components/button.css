@@ -24,7 +24,8 @@
   transition: all value($time, normal);
 
   &--primary {
-    @mixin button value($color-primary, normal), value($color-primary, semidarker), value($color-primary, bright);
+    @mixin button value($color-primary, normal), value($color-primary, semidarker),
+      color-mod(value($color-primary, normal) blackness(30%));
   }
 
   &--primary-dark {
@@ -44,7 +45,7 @@
 
   &--primary-bright {
     @mixin button value($color-primary, bright), color-mod(value($color-primary, normal) blackness(70%)),
-      color-mod(value($color-primary, normal) blackness(60%));
+      color-mod(value($color-primary, normal) blackness(10%));
   }
 
   &--primary-brighter {
