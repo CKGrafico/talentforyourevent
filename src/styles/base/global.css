@@ -1,0 +1,29 @@
+/**
+ * Define global styles for the application,
+ * usually html and body content.
+ */
+
+html,
+body {
+  background-color: value($color-basic, brighter);
+  color: value($color-basic, darkest);
+  font-family: 'Montserrat', 'Segoe UI', sans-serif;
+  font-size: calc($default-font-size * 0.65);
+  height: 100%;
+  width: 100%;
+
+  @media screen and (min-width: value($media, s)) {
+    font-size: calc($default-font-size * 0.8);
+  }
+
+  @media screen and (min-width: value($media, m)) {
+    font-size: $default-font-size;
+  }
+}
+
+a,
+a:active,
+a:hover,
+a:visited {
+  text-decoration: none;
+}

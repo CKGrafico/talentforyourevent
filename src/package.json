@@ -1,0 +1,57 @@
+{
+  "name": "talentforyourevent-app",
+  "description": "The main website of talent for your event",
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "start": "node .output/server/index.mjs",
+    "lint": "yarn lint:scripts && yarn lint:editor",
+    "lint:scripts": "eslint --fix src --ext .js,.jsx",
+    "lint:editor": "eclint fix"
+  },
+  "devDependencies": {
+    "@iconify-json/carbon": "^1.1.3",
+    "@pinia/nuxt": "^0.1.8",
+    "@vueuse/components": "^8.2.4",
+    "@vueuse/nuxt": "^8.2.3",
+    "eclint": "^2.8.1",
+    "eslint": "8.12.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-flowtype": "^8.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nuxt3": "latest",
+    "postcss": "^7.0.35",
+    "postcss-at-rules-variables": "^0.1.10",
+    "postcss-calc": "^7.0.5",
+    "postcss-color-mod-function": "^3.0.3",
+    "postcss-discard-comments": "^4.0.2",
+    "postcss-each": "^0.10.0",
+    "postcss-fontpath": "^1.0.0",
+    "postcss-functions": "^3.0.0",
+    "postcss-functions-post": "npm:postcss-functions@3.0.0",
+    "postcss-hexrgba": "^2.0.1",
+    "postcss-import": "^12.0.0",
+    "postcss-loader": "^5.0.0",
+    "postcss-mixins": "^6.2.3",
+    "postcss-nested": "^4.2.3",
+    "postcss-replace": "CKGrafico/postcss-replace#patch-1",
+    "postcss-simple-vars": "^5.0.2",
+    "prettier": "^2.6.2",
+    "prisma": "^3.11.1",
+    "simple-icons": "^6.17.0",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge",
+    "@prisma/client": "^3.11.1",
+    "normalize.css": "^8.0.1",
+    "pinia": "^2.0.13",
+    "qs": "^6.10.3",
+    "vanilla-tilt-vue": "^0.1.3",
+    "vue": "^3.2.25"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  }
+}

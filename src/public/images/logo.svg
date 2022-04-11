@@ -1,0 +1,13 @@
+<svg width="360" height="360" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <ellipse opacity="0.8" stroke-width="0" ry="96.5" rx="96.5" id="svg_11" cy="258.52847" cx="249.5036" stroke="#000" fill="#ffffff"/>
+  <ellipse opacity="0.7" stroke-width="0" ry="96.5" rx="96.5" id="svg_10" cy="258.52847" cx="110.5" stroke="#000" fill="#ffffff"/>
+  <ellipse opacity="0.7" stroke-width="0" ry="96.5" rx="96.5" id="svg_9" cy="100.5" cx="249.5036" stroke="#000" fill="#ffffff"/>
+  <ellipse opacity="0.8" stroke-width="0" ry="96.5" rx="96.5" id="svg_8" cy="100.5" cx="110.5" stroke="#000" fill="#ffffff"/>
+  <ellipse opacity="0.8" stroke-width="0" ry="96.5" rx="96.5" id="svg_2" cy="100.5" cx="110.5" stroke="#000" fill="#45c4b0"/>
+  <ellipse opacity="0.7" stroke-width="0" ry="96.5" rx="96.5" id="svg_5" cy="100.5" cx="249.5036" stroke="#000" fill="#9aeba3"/>
+  <ellipse opacity="0.7" stroke-width="0" ry="96.5" rx="96.5" id="svg_6" cy="258.52847" cx="110.5" stroke="#000" fill="#13678a"/>
+  <ellipse opacity="0.8" stroke-width="0" ry="96.5" rx="96.5" id="svg_7" cy="258.52847" cx="249.5036" stroke="#000" fill="#dafdba"/>
+ </g>
+</svg>

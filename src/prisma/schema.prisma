@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int          @id @default(autoincrement())
+  twitter      String       @unique @db.VarChar(255)
+  github       String       @unique @db.VarChar(255)
+  website      String       @db.VarChar(255)
+  biography    String       @db.VarChar(800)
+  eventTypes   EventType[]
+  categories   Category[]
+  technologies Technology[]
+}
+
+model EventType {
+  id    Int    @id @default(autoincrement())
+  name  String @unique @db.VarChar(255)
+  users User[]
+  icon String  @db.VarChar(4000)
+}
+
+model Category {
+  id         Int          @id @default(autoincrement())
+  name       String       @unique @db.VarChar(255)
+  users      User[]
+  Technology Technology[]
+  icon String  @db.VarChar(4000)
+}
+
+model Technology {
+  id         Int      @id @default(autoincrement())
+  name       String   @unique @db.VarChar(255)
+  users      User[]
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  icon String  @db.VarChar(4000)
+}
