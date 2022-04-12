@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
-    "start": "node .output/server/index.mjs",
+    "start": "node ./dist/server/index.mjs",
     "lint": "yarn lint:scripts && yarn lint:editor",
     "lint:scripts": "eslint --fix src --ext .js,.jsx",
     "lint:editor": "eclint fix"

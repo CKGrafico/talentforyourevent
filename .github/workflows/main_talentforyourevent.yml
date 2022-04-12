@@ -19,13 +19,14 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
-          node-version: '16.x'
+          node-version: "16.x"
 
       - name: install, build
         run: |
           cd ./src
           yarn
           yarn build
+          mv .output ./dist
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -37,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'Production'
+      name: "Production"
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
@@ -46,11 +47,11 @@ jobs:
         with:
           name: node-app
 
-      - name: 'Deploy to Azure Web App'
+      - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'talentforyourevent'
-          slot-name: 'Production'
+          app-name: "talentforyourevent"
+          slot-name: "Production"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A335DBC24ECF40C484A5D5274B513959 }}
           package: .
