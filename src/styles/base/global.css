@@ -7,7 +7,7 @@ html,
 body {
   background-color: value($color-basic, brighter);
   color: value($color-basic, darkest);
-  font-family: 'Montserrat', 'Segoe UI', sans-serif;
+  font-family: $font-family;
   font-size: calc($default-font-size * 0.65);
   height: 100%;
   width: 100%;

@@ -44,6 +44,9 @@ $font-size: (
   xl: 1.5rem
 );
 
+$font-family: 'Noto Sans', 'Segoe UI', sans-serif;
+$font-title: 'IBM Plex Sans', serif;
+
 $media: (
   xxs: 360px,
   xs: 640px,

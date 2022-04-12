@@ -12,7 +12,7 @@ useMeta({
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;500;700&display=swap&family=Noto+Sans:wght@100;300;400;600&display=swap');
 </style>
 
 <template>
