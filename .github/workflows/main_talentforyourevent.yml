@@ -30,6 +30,7 @@ jobs:
       - name: Zip artifact for deployment
         run: |
           cd ./src
+          mv ./package.json .output/
           zip release.zip .output/* -r
 
       - name: Upload artifact for deployment job
