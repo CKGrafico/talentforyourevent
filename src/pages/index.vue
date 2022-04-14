@@ -1,5 +1,6 @@
 <script setup>
 import { githubLogin } from '#imports';
+import { marked } from 'marked';
 
 const login = githubLogin;
 const user = await useGithubUser();
@@ -13,6 +14,10 @@ useMeta({
 
 function onClickLogin() {
   login();
+}
+
+function getMarkdown(text = '') {
+  return marked(text);
 }
 
 async function getTechnologies() {
@@ -140,8 +145,7 @@ $logo-size: 15rem;
     </div>
 
     <div class="home__summary">
-      <p class="home__text">{{ $t('home.summary.introduction') }}</p>
-      <p class="home__text">{{ $t('home.summary.ending') }}</p>
+      <div class="home__text" v-html="getMarkdown($t('home.summary.introduction'))" />
     </div>
 
     <div class="home__actions">

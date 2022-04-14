@@ -45,6 +45,7 @@
   "dependencies": {
     "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge",
     "@prisma/client": "^3.11.1",
+    "marked": "^4.0.14",
     "normalize.css": "^8.0.1",
     "pinia": "^2.0.13",
     "qs": "^6.10.3",

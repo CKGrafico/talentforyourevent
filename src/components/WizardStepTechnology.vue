@@ -28,7 +28,7 @@ function onClickPreviousStep() {
 }
 
 function onClickNextStep() {
-  alert('next step');
+  alert('Pronto estará lista nuestra aplicación!');
 }
 
 await getWizardTechnologies(wizardStore.categories);
