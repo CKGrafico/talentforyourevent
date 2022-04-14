@@ -26,12 +26,11 @@ jobs:
           cd ./src
           yarn
           yarn build
-          mv .output ./dist
           
       - name: Zip artifact for deployment
         run: |
           cd ./src
-          zip release.zip ./dist/* -r
+          zip release.zip .output/* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -56,6 +55,7 @@ jobs:
         run: |
           unzip release.zip
           rm release.zip
+          mv ./dist .
 
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
