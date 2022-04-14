@@ -4,6 +4,7 @@ import { githubLogin } from '#imports';
 const login = githubLogin;
 const user = await useGithubUser();
 const technologies = ref([]);
+
 // const { t } = VueI18n.useI18n();
 
 useMeta({
@@ -14,20 +15,22 @@ function onClickLogin() {
   login();
 }
 
-try {
-  const response = await useFetch('/api/wizard/technologies-random?take=5');
-  technologies.value = response.data;
-} catch (e) {
-  console.error(e);
+async function getTechnologies() {
+  try {
+    const response = await useFetch('/api/wizard/technologies-random?take=5');
+    technologies.value = response.data;
+  } catch (e) {
+    console.error(e);
+  }
 }
+
+await getTechnologies();
 </script>
 
 <style scoped>
 @import '~/styles/variables.css';
 
 $logo-size: 15rem;
-$technology-size: 3rem;
-
 .home {
   display: flex;
   flex-direction: column;
@@ -101,75 +104,12 @@ $technology-size: 3rem;
     }
   }
 
-  &__title {
-    font-family: $font-title;
-    font-weight: value($font-weight, bold);
-    font-size: $technology-size;
-    max-width: 30rem;
-    text-align: center;
-    margin-top: 0;
-  }
-
-  &__title-space {
-    width: 10rem;
-    display: inline-block;
-  }
-
-  &__technologies {
-    position: absolute;
-    height: $technology-size;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  &__technology {
-    position: absolute;
-    height: $technology-size;
-    left: 0;
-
-    &--1 {
-      margin-top: 0;
-      animation: tech1 4s infinite;
-
-      @keyframes tech1 {
-        0% {
-          transform: translateY(110%);
-          opacity: 1;
-        }
-
-        30%,
-        70% {
-          transform: translateY(0);
-          opacity: 1;
-        }
-
-        85% {
-          opacity: 0;
-        }
-
-        97% {
-          transform: translateY(-110%);
-        }
-
-        98% {
-          transform: translate(-110%, -110%);
-        }
-
-        99% {
-          transform: translate(-110%, 110%);
-        }
-
-        100% {
-          transform: translate(0, 110%);
-          opacity: 0;
-        }
-      }
-    }
-  }
-
   &__summary {
-    max-width: 60rem;
     font-size: value($font-size, l);
+    max-width: 50rem;
+    line-height: 1.65rem;
+    text-align: justify;
+    margin-bottom: 2rem;
   }
 
   &__actions {
@@ -189,18 +129,14 @@ $technology-size: 3rem;
         <div class="home__circle home__circle--3"></div>
         <div class="home__circle home__circle--4"></div>
       </div>
-      <h1 class="home__title">
-        {{ $t('home.title') }}
-        <span class="home__technologies">
-          <span
-            v-for="({ id, name }, index) in technologies.value"
-            :key="id"
-            :class="`home__technology home__technology--${index + 1}`"
-            >{{ name }}</span
-          >
-        </span>
-        <span class="home__title-space"></span>
-      </h1>
+
+      <ClientOnly>
+        <IndexTitle :text="$t('home.title')" :technologies="technologies.value" />
+
+        <template #fallback>
+          <IndexTitlePlaceholder :text="$t('home.title')" :name="$t('home.technology')" />
+        </template>
+      </ClientOnly>
     </div>
 
     <div class="home__summary">
@@ -209,7 +145,11 @@ $technology-size: 3rem;
     </div>
 
     <div class="home__actions">
-      <a href="https://github.com" target="_blank" class="button button--primary-bright">
+      <a
+        href="https://github.com/CKGrafico/talentforyourevent/issues/new?assignees=&labels=Draft%2C+User&template=add-user-to-platform.md&title=Add+User+%7Bgithub_name%7D+to+the+platform"
+        target="_blank"
+        class="button button--primary-bright"
+      >
         {{ $t('home.actions.speaker') }}
       </a>
       <button class="button button--primary" @click="onClickLogin">{{ $t('home.actions.event') }}</button>
