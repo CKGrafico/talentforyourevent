@@ -55,7 +55,7 @@ jobs:
         run: |
           unzip release.zip
           rm release.zip
-          mv .output/ .
+          mv .output/* .
 
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
