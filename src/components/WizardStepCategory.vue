@@ -38,6 +38,9 @@ await getWizardCategories();
   <div v-if="categories" class="wizard__step">
     <h1 class="wizard__title">{{ $t('wizard.category.title') }}</h1>
     <h2 class="wizard__subtitle">{{ $t('wizard.category.subtitle') }}</h2>
+    <div class="wizard__breadcrumbs">
+      <WizardBreadCrumbs :items="Object.values(WizardStep).filter(x => typeof x === 'string')" :selected="WizardStep[wizardStore.currentStep]" />
+    </div>
     <div class="wizard__options">
       <WizardOption
         v-for="{ id, name, icon } in categories.value"
