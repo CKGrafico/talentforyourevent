@@ -9,12 +9,31 @@ const user = await useGithubUser();
 @import '~/styles/variables.css';
 
 .header {
-  position: absolute;
-  right: 0;
-  display: flex;
+  width: 100%;
+  display:flex;
+  background-color: #45c4b0;
+}
+
+.home {
+
+  &__image {
+    max-width: 2rem;
+    object-fit: cover;
+    width: 100%;
+    margin-right: 0.25rem;
+    margin-left: 0.5rem;
+    margin-top: 0.25rem;
+  }
+
+}
+
+.user {
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0.25rem;
+  position: absolute;
+  display: flex;
+  right: 0;
 
   &__image {
     border-radius: 50%;
@@ -32,8 +51,15 @@ const user = await useGithubUser();
 }
 </style>
 <template>
-  <div v-if="user" class="header">
-    <img class="header__image" :src="user.avatar_url" />
-    <span class="header__name" @click="logout" :title="$t('header.logout')"> {{ user.login }} </span>
+<div class="header">
+  <div class="home">
+  <a href="/">
+    <img class="home__image" src="/images/logo.svg" />
+  </a>
   </div>
+  <div v-if="user" class="user">
+    <img class="user__image" :src="user.avatar_url" />
+    <span class="user__name" @click="logout" :title="$t('header.logout')"> {{ user.login }} </span>
+  </div>
+</div>
 </template>
