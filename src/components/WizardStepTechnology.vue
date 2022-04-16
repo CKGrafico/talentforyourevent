@@ -7,7 +7,7 @@ import { useWizardStore } from '~/store/wizard';
 const wizardStore = useWizardStore();
 const technologies = wizardTechnologies;
 const MIN_TO_SEND = 0;
-const MAX_TO_SEND = 5;
+const MAX_TO_SEND = 3;
 
 function getColor(value) {
   const hue = [198, 200];
@@ -46,6 +46,7 @@ await getWizardTechnologies(wizardStore.categories);
         :icon="icon"
         :key="id"
         :is-selected="isSelected(id)"
+        :is-disabled="wizardStore.technologies && wizardStore.technologies?.length >= MAX_TO_SEND"
         @click="onClickOption(id)"
       />
     </div>

@@ -15,6 +15,8 @@
   }
 
   &-disabled {
+    pointer-events: none;
+
     @mixin media-suffixes {
       opacity: 0.5;
     }
