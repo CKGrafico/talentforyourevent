@@ -1,8 +1,15 @@
 import prismaClient from '@prisma/client';
-import { useQuery } from 'h3';
+import { createError, useCookies, useQuery } from 'h3';
+import { githubFetch, GITHUB_TOKEN } from '~/helpers';
 const { PrismaClient } = prismaClient;
 
 export default async (req, res) => {
+  try {
+    await githubFetch('/user', {}, useCookies(req)[GITHUB_TOKEN]);
+  } catch {
+    return createError({ statusCode: 401 });
+  }
+
   const query = useQuery(req);
 
   if (!query['categories[]']) {

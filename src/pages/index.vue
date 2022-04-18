@@ -22,7 +22,9 @@ function getMarkdown(text = '') {
 
 async function getTechnologies() {
   try {
-    const response = await useFetch('/api/wizard/technologies-random?take=5');
+    const response = await useFetch('/api/wizard/technologies-random?take=5', {
+      headers: useRequestHeaders(['cookie'])
+    });
     technologies.value = response.data;
   } catch (e) {
     console.error(e);

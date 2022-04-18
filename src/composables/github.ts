@@ -1,24 +1,17 @@
 // From https://github.com/Atinux/discuss
 
-export const useGithubCookie = () => useCookie('gh_token');
+import { githubFetch, GITHUB_COOKIE, GITHUB_TOKEN } from '~/helpers';
 
-export const githubFetch = (url: string, fetchOptions: any = {}) => {
-  return $fetch(url, {
-    baseURL: 'https://api.github.com',
-    ...fetchOptions,
-    headers: {
-      Authorization: `token ${useGithubCookie().value}`,
-      ...fetchOptions.headers
-    }
-  });
-};
+export const useGithubCookie = () => useCookie(GITHUB_TOKEN);
 
 export const useGithubUser = async () => {
   const cookie = useGithubCookie();
-  const user = useState('gh_user');
+  const user = useState(GITHUB_COOKIE);
+
   if (cookie.value && !user.value) {
-    user.value = await githubFetch('/user');
+    user.value = await githubFetch('/user', {}, useGithubCookie().value);
   }
+
   return user;
 };
 
@@ -31,7 +24,7 @@ export const githubLogin = () => {
 
 export const githubLogout = async () => {
   useGithubCookie().value = null;
-  useState('gh_user').value = null;
+  useState(GITHUB_COOKIE).value = null;
   navigateTo('/');
 };
 

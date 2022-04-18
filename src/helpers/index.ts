@@ -1,1 +1,2 @@
-export * from './color';
+export * from './color.helper';
+export * from './github.helper';

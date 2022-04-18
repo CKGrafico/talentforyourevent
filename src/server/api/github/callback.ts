@@ -1,4 +1,5 @@
 import { sendRedirect, setCookie, useQuery } from 'h3';
+import { GITHUB_TOKEN } from '~/helpers';
 
 export default async (req, res) => {
   const { code } = useQuery(req);
@@ -6,6 +7,7 @@ export default async (req, res) => {
   if (!code) {
     return sendRedirect(res, '/');
   }
+
   const response: any = await $fetch('https://github.com/login/oauth/access_token', {
     method: 'POST',
     body: {
@@ -14,11 +16,12 @@ export default async (req, res) => {
       code
     }
   });
+
   if (response.error) {
     return sendRedirect(res, '/');
   }
 
-  setCookie(res, 'gh_token', response.access_token, { path: '/' });
+  setCookie(res, GITHUB_TOKEN, response.access_token, { path: '/' });
 
   return sendRedirect(res, '/wizard');
 };
