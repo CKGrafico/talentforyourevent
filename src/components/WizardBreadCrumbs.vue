@@ -1,38 +1,62 @@
+<script setup>
 //Component from https://gist.github.com/AnoRebel/0690388ca901523d51476fd35d3037ab
+const props = defineProps({
+  items: {
+    type: Array,
+    required: true
+  },
+  selected: {
+    type: String,
+    required: true,
+    default: 'Events'
+  }
+});
+</script>
+<style scoped>
+@import '~/styles/variables.css';
+
+.breadcrumb {
+  display: flex;
+  justify-content: flex-start;
+
+  &__list {
+    list-style: none;
+    padding: 0.5rem;
+    margin: 0;
+  }
+
+  &__item {
+    display: inline-block;
+  }
+
+  &__separator {
+    color: value($color-primary, semidarker);
+    opacity: 0.5;
+    margin-left: 0.75rem;
+  }
+
+  &__text {
+    height: 100%;
+    margin-left: 10px;
+    color: value($color-primary, semidarker);
+    opacity: 0.5;
+
+    &.is-selected {
+      opacity: 1;
+
+      font-weight: bold;
+    }
+  }
+}
+</style>
+
 <template>
-  <nav class="wizardbreadcrumbs__navbar" aria-label="Breadcrumb">
-    <ul class="wizardbreadcrumbs__list">
-      <li class="wizardbreadcrumbs__itemlist" v-for="(item, index) in items" :key="index">
-        <svg v-if="index != 0" xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24">
-          <path d="m 12,6 10,10 -10,10 z" :fill="getColor(index)" />
-        </svg>
-        <span v-if="item == selected" class="wizardbreadcrumbs__item wizardbreadcrumbs__selected">{{ item }}</span>
-        <span v-else="" class="wizardbreadcrumbs__item">{{ item }}</span>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ul class="breadcrumb__list">
+      <li class="breadcrumb__item" v-for="(item, index) in items" :key="index">
+        <span v-if="index != 0" class="breadcrumb__separator">/</span>
+        <span :class="`breadcrumb__text ${item === selected ? 'is-selected' : ''}`">{{ item }}</span>
       </li>
     </ul>
   </nav>
 </template>
-<script>
-export default {
-  name: 'Breadcrumbs',
-  methods: {
-    getColor(index) {
-      const colors = ['#13678a', '#9aeba3', '#dafdba'];
-      index = index % colors.length;
-
-      return colors[index];
-    }
-  },
-  props: {
-    items: {
-      type: Array,
-      required: true
-    },
-    selected: {
-      type: String,
-      required: true,
-      default: 'Events'
-    }
-  }
-};
-</script>

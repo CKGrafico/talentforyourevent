@@ -25,11 +25,16 @@ await getEventTypes();
 
 <template>
   <div v-if="eventTypes" class="wizard__step">
+    <div class="wizard__breadcrumbs">
+      <WizardBreadCrumbs
+        :items="Object.values(WizardStep).filter((x) => typeof x === 'string')"
+        :selected="WizardStep[wizardStore.currentStep]"
+      />
+    </div>
+
     <h1 class="wizard__title">{{ $t('wizard.event.title') }}</h1>
     <h2 class="wizard__subtitle">{{ $t('wizard.event.subtitle') }}</h2>
-    <div class="wizard__breadcrumbs">
-      <WizardBreadCrumbs :items="Object.values(WizardStep).filter(x => typeof x === 'string')" :selected="WizardStep[wizardStore.currentStep]" />
-    </div>
+
     <div class="wizard__options">
       <WizardOption
         v-for="{ id, name, icon } in eventTypes.value"

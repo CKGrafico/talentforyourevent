@@ -17,7 +17,7 @@ checkIfUserIsLogged(user);
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0;
+  padding-bottom: 1rem;
 
   @media screen and (min-width: value($media, s)) {
     max-width: rem(1280px);
@@ -57,36 +57,6 @@ checkIfUserIsLogged(user);
     }
   }
 }
-
-.wizardbreadcrumbs {
-
-  &__navbar {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-  }
-
-  &__itemlist{
-    display: inline-block;
-  }
-
-  &__list {
-    
-  }
-
-  &__item {
-    height: 100%;
-    margin-left: 10px;
-    color: lightgray;
-  }
-
-  &__selected {
-    color: #45c4b0;
-    font-weight: bold;
-  }
-
-}
-
 </style>
 
 <template>
