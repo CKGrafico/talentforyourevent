@@ -41,7 +41,7 @@
   }
 
   &--primary-bright {
-    @mixin button value($color-primary, bright), color-mod(value($color-primary, normal) blackness(70%));
+    @mixin button value($color-primary, bright), color-mod(value($color-primary, normal) blackness(42%));
   }
 
   &--primary-brighter {

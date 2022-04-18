@@ -58,12 +58,12 @@ await getWizardCategories();
     </div>
 
     <div class="wizard__actions">
-      <button class="button button--primary-darker" @click="onClickPreviousStep()">
+      <button class="button button--primary" @click="onClickPreviousStep()">
         {{ $t('wizard.back') }}
       </button>
 
       <button
-        class="wizard__action button button--primary"
+        class="wizard__action button button--primary-bright"
         @click="onClickNextStep()"
         :disabled="
           !wizardStore.categories ||

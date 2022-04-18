@@ -49,7 +49,7 @@ await getEventTypes();
 
     <div class="wizard__actions">
       <button
-        class="wizard__action button button--primary"
+        class="wizard__action button button--primary-bright"
         @click="onClickNextStep()"
         :disabled="!wizardStore.events || wizardStore.events?.length < MIN_TO_SEND"
       >
