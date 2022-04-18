@@ -41,7 +41,8 @@ const user = await useGithubUser();
 
   &__avatar {
     border-radius: 50%;
-    border: 1px solid color: value($color-primary, brighter);
+    border: 1px solid;
+    color: value($color-primary, brighter);
   }
 
   &__name {
