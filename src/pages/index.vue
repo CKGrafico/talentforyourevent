@@ -121,6 +121,7 @@ $logo-size: 15rem;
     display: flex;
     justify-content: space-around;
     width: 30rem;
+    padding-bottom: 2rem;
   }
 }
 </style>

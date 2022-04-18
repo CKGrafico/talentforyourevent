@@ -10,12 +10,11 @@ const user = await useGithubUser();
 
 .header {
   width: 100%;
-  display:flex;
+  display: flex;
   background-color: #45c4b0;
 }
 
 .home {
-
   &__image {
     max-width: 2rem;
     object-fit: cover;
@@ -24,7 +23,6 @@ const user = await useGithubUser();
     margin-left: 0.5rem;
     margin-top: 0.25rem;
   }
-
 }
 
 .user {
@@ -51,15 +49,15 @@ const user = await useGithubUser();
 }
 </style>
 <template>
-<div class="header">
-  <div class="home">
-  <a href="/">
-    <img class="home__image" src="/images/logo.svg" />
-  </a>
+  <div v-if="user" class="header">
+    <div class="home">
+      <a href="/">
+        <img class="home__image" src="/images/logo.svg" />
+      </a>
+    </div>
+    <div class="user">
+      <img class="user__image" :src="user.avatar_url" />
+      <span class="user__name" @click="logout" :title="$t('header.logout')"> {{ user.login }} </span>
+    </div>
   </div>
-  <div v-if="user" class="user">
-    <img class="user__image" :src="user.avatar_url" />
-    <span class="user__name" @click="logout" :title="$t('header.logout')"> {{ user.login }} </span>
-  </div>
-</div>
 </template>

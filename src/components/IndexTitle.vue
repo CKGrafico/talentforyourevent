@@ -57,6 +57,7 @@ changeOrderOfTechnologies();
     position: absolute;
     height: calc($technology-size + 0.5rem);
     width: 100%;
+    max-width: 25rem;
     overflow: hidden;
   }
 

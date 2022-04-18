@@ -1,10 +1,11 @@
-@define-mixin button ##background, ##foreground, ##hover {
-  background-color: ##background;
-  border-radius: 100px;
+@define-mixin button ##background, ##foreground {
+  background-color: rgba(##background, 0.1);
+  border-radius: 100rem;
+  border: 2px solid ##background;
   color: ##foreground;
 
   &:hover {
-    background-color: ##hover;
+    background-color: ##background;
   }
 
   @mixin-content;
@@ -24,32 +25,26 @@
   transition: all value($time, normal);
 
   &--primary {
-    @mixin button value($color-primary, normal), value($color-primary, semidarker),
-      color-mod(value($color-primary, normal) blackness(30%));
+    @mixin button value($color-primary, normal), value($color-primary, semidarker);
   }
 
   &--primary-dark {
-    @mixin button value($color-primary, dark), color-mod(value($color-primary, dark) blackness(70%)),
-      color-mod(value($color-primary, dark) lightness(60%));
+    @mixin button value($color-primary, dark), color-mod(value($color-primary, dark) blackness(70%));
   }
 
   &--primary-darker {
-    @mixin button value($color-primary, darker), color-mod(value($color-primary, darker) lightness(80%)),
-      color-mod(value($color-primary, darker) lightness(40%));
+    @mixin button value($color-primary, darker), color-mod(value($color-primary, darker) lightness(80%));
   }
 
   &--primary-darkest {
-    @mixin button value($color-primary, darkest), color-mod(value($color-primary, darkest) lightness(80%)),
-      color-mod(value($color-primary, darkest) lightness(60%));
+    @mixin button value($color-primary, darkest), color-mod(value($color-primary, darkest) lightness(80%));
   }
 
   &--primary-bright {
-    @mixin button value($color-primary, bright), color-mod(value($color-primary, normal) blackness(70%)),
-      color-mod(value($color-primary, normal) blackness(10%));
+    @mixin button value($color-primary, bright), color-mod(value($color-primary, normal) blackness(70%));
   }
 
   &--primary-brighter {
-    @mixin button value($color-primary, brighter), color-mod(value($color-primary, normal) blackness(50%)),
-      color-mod(value($color-primary, normal) blackness(60%));
+    @mixin button value($color-primary, brighter), color-mod(value($color-primary, normal) blackness(50%));
   }
 }
