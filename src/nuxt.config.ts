@@ -40,6 +40,10 @@ export default defineNuxtConfig({
       }
     }
   },
+  loading: {
+    color: '#13678a',
+    height: '5px'
+  },
   vueuse: {
     ssrHandlers: true
   },
