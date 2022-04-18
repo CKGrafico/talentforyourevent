@@ -6,6 +6,10 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
+  isDisabled: {
+    type: Boolean,
+    default: false
+  },
   name: {
     type: String,
     required: true
@@ -113,7 +117,7 @@ function getColor(value) {
 
 <template>
   <Tilt
-    :class="`option ${isSelected ? 'is-selected' : ''}`"
+    :class="`option ${isSelected ? 'is-selected' : isDisabled ? 'is-disabled' : '' } `"
     :key="id"
     :style="{ '--background': getColor(name).background, '--foreground': getColor(name).foreground }"
   >

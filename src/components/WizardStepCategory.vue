@@ -46,6 +46,7 @@ await getWizardCategories();
         :icon="icon"
         :key="id"
         :is-selected="isSelected(id)"
+        :is-disabled="wizardStore.categories && wizardStore.categories?.length >= MAX_TO_SEND"
         @click="onClickOption(id)"
       />
     </div>
