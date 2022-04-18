@@ -1,15 +1,8 @@
 import prismaClient from '@prisma/client';
-import { createError, useCookies, useQuery } from 'h3';
-import { githubFetch, GITHUB_TOKEN } from '~/helpers';
+import { useQuery } from 'h3';
 const { PrismaClient } = prismaClient;
 
 export default async (req, res) => {
-  try {
-    await githubFetch('/user', {}, useCookies(req)[GITHUB_TOKEN]);
-  } catch {
-    return createError({ statusCode: 401 });
-  }
-
   const query = useQuery(req);
   const prisma = new PrismaClient();
 

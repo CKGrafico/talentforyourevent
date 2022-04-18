@@ -1,4 +1,5 @@
 import qs from 'qs';
+import { GITHUB_TOKEN } from '~/helpers';
 
 export const wizardEventTypes = ref(null);
 export const wizardCategories = ref(null);
@@ -7,8 +8,11 @@ export const wizardTechnologies = ref(null);
 export async function getEventTypes() {
   try {
     const response = await useFetch('/api/wizard/event-types', {
-      headers: useRequestHeaders(['cookie'])
+      headers: {
+        [GITHUB_TOKEN]: useCookie(GITHUB_TOKEN).value
+      }
     });
+
     wizardEventTypes.value = response.data;
   } catch (e) {
     console.error(e);
@@ -18,8 +22,11 @@ export async function getEventTypes() {
 export async function getWizardCategories() {
   try {
     const response = await useFetch('/api/wizard/categories', {
-      headers: useRequestHeaders(['cookie'])
+      headers: {
+        [GITHUB_TOKEN]: useCookie(GITHUB_TOKEN).value
+      }
     });
+
     wizardCategories.value = response.data;
   } catch (e) {
     console.error(e);
@@ -31,9 +38,12 @@ export async function getWizardTechnologies(categories) {
     const response = await useFetch(
       `/api/wizard/technologies?${qs.stringify({ categories: categories }, { arrayFormat: 'brackets' })}`,
       {
-        headers: useRequestHeaders(['cookie'])
+        headers: {
+          [GITHUB_TOKEN]: useCookie(GITHUB_TOKEN).value
+        }
       }
     );
+
     wizardTechnologies.value = response.data;
   } catch (e) {
     console.error(e);

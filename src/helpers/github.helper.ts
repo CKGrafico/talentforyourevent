@@ -1,3 +1,6 @@
+export const GITHUB_COOKIE = 'gh_user';
+export const GITHUB_TOKEN = 'gh_token';
+
 export const githubFetch = (url: string, fetchOptions: any = {}, token: string) => {
   return $fetch(url, {
     baseURL: 'https://api.github.com',
@@ -8,6 +11,3 @@ export const githubFetch = (url: string, fetchOptions: any = {}, token: string) 
     }
   });
 };
-
-export const GITHUB_COOKIE = 'gh_user';
-export const GITHUB_TOKEN = 'gh_token';

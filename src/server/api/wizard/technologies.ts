@@ -1,11 +1,11 @@
 import prismaClient from '@prisma/client';
-import { createError, useCookies, useQuery } from 'h3';
+import { createError, useQuery } from 'h3';
 import { githubFetch, GITHUB_TOKEN } from '~/helpers';
 const { PrismaClient } = prismaClient;
 
 export default async (req, res) => {
   try {
-    await githubFetch('/user', {}, useCookies(req)[GITHUB_TOKEN]);
+    await githubFetch('/user', {}, req.headers[GITHUB_TOKEN]);
   } catch {
     return createError({ statusCode: 401 });
   }
@@ -16,7 +16,6 @@ export default async (req, res) => {
     return [];
   }
 
-  // Number(query.category.toString())
   const prisma = new PrismaClient();
   const technologies = await prisma.technology.findMany({
     where: {

@@ -23,7 +23,9 @@ function getMarkdown(text = '') {
 async function getTechnologies() {
   try {
     const response = await useFetch('/api/wizard/technologies-random?take=5', {
-      headers: useRequestHeaders(['cookie'])
+      headers: {
+        [GITHUB_TOKEN]: useCookie(GITHUB_TOKEN).value
+      }
     });
     technologies.value = response.data;
   } catch (e) {
