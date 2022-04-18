@@ -11,53 +11,62 @@ const user = await useGithubUser();
 .header {
   width: 100%;
   display: flex;
-  background-color: #45c4b0;
-}
-
-.home {
-  &__image {
-    max-width: 2rem;
-    object-fit: cover;
-    width: 100%;
-    margin-right: 0.25rem;
-    margin-left: 0.5rem;
-    margin-top: 0.25rem;
-  }
-}
-
-.user {
   justify-content: space-between;
-  align-items: center;
-  padding: 0.25rem;
-  position: absolute;
-  display: flex;
-  right: 0;
+  background-color: value($color-primary, normal);
+  padding: 0 1rem;
 
-  &__image {
-    border-radius: 50%;
+  &__column {
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25rem;
+    display: flex;
+  }
+
+  &__logo,
+  &__avatar {
     max-width: 2rem;
     object-fit: cover;
     width: 100%;
-    margin-right: 0.25rem;
+    margin: 0.25rem;
+  }
+
+  &__logo {
+    filter: saturate(1);
+    transition: filter value($time, slow);
+
+    &:hover {
+    }
+  }
+
+  &__avatar {
+    border-radius: 50%;
+    border: 1px solid color: value($color-primary, brighter);
   }
 
   &__name {
-    color: value($color-primary, brightest);
+    color: value($color-primary, brighter);
     cursor: pointer;
     font-size: value($font-size, s);
+    transition: color value($time, normal);
+    padding-left: 0.25rem;
+
+    &:hover {
+      color: value($color-primary, brightest);
+    }
   }
 }
 </style>
+
 <template>
   <div v-if="user" class="header">
-    <div class="home">
+    <div class="header__column">
       <a href="/">
-        <img class="home__image" src="/images/logo.svg" />
+        <img class="header__logo" src="/images/logo.svg" alt="Logo" />
       </a>
     </div>
-    <div class="user">
-      <img class="user__image" :src="user.avatar_url" />
-      <span class="user__name" @click="logout" :title="$t('header.logout')"> {{ user.login }} </span>
+    <div class="header__column">
+      <img class="header__avatar" :src="user.avatar_url" />
+      <span class="header__name" @click="logout" :title="$t('header.logout')"> {{ user.login }} </span>
     </div>
   </div>
 </template>
