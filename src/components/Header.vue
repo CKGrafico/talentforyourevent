@@ -35,6 +35,7 @@ const user = await useGithubUser();
     transition: filter value($time, slow);
 
     &:hover {
+      filter: saturate(1.25) brightness(0.95);
     }
   }
 
