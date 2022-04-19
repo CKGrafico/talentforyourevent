@@ -1,19 +1,11 @@
 import prismaClient from '@prisma/client';
-import { createError } from 'h3';
-import { githubFetch, GITHUB_TOKEN } from '~/helpers';
+import { getAllCategories, isUserLogged } from '~/server/services';
 const { PrismaClient } = prismaClient;
 
 export default async (req, res) => {
-  try {
-    await githubFetch('/user', {}, req.headers[GITHUB_TOKEN]);
-  } catch {
-    return createError({ statusCode: 401 });
-  }
+  await isUserLogged(req);
 
-  const prisma = new PrismaClient();
-  const categories = await prisma.category.findMany();
-
-  await prisma.$disconnect();
+  const categories = await getAllCategories();
 
   return categories;
 };

@@ -1,20 +1,11 @@
 import prismaClient from '@prisma/client';
-import { createError } from 'h3';
-import { githubFetch, GITHUB_TOKEN } from '~/helpers';
+import { getAllEventTypes, isUserLogged } from '~/server/services';
 const { PrismaClient } = prismaClient;
 
 export default async (req, res) => {
-  try {
-    await githubFetch('/user', {}, req.headers[GITHUB_TOKEN]);
-  } catch (e) {
-    return createError({ statusCode: 401 });
-  }
+  await isUserLogged(req);
 
-  const prisma = new PrismaClient();
-
-  const events = await prisma.eventType.findMany();
-
-  await prisma.$disconnect();
+  const events = await getAllEventTypes();
 
   return events;
 };

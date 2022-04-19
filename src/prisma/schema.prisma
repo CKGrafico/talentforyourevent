@@ -44,3 +44,10 @@ model Technology {
   categoryId Int
   icon String  @db.VarChar(4000)
 }
+
+model Searcher {
+  id           Int          @id @default(autoincrement())
+  github       String       @unique @db.VarChar(255)
+  queriesToday Int          @default(0)
+  lastQuery    DateTime     @db.DateTime
+}

@@ -1,29 +1,15 @@
-import prismaClient from '@prisma/client';
-import { createError, useQuery } from 'h3';
-import { githubFetch, GITHUB_TOKEN } from '~/helpers';
-const { PrismaClient } = prismaClient;
+import { useQuery } from 'h3';
+import { findTechnologiesByCategories, isUserLogged } from '~/server/services';
 
 export default async (req, res) => {
-  try {
-    await githubFetch('/user', {}, req.headers[GITHUB_TOKEN]);
-  } catch {
-    return createError({ statusCode: 401 });
-  }
-
+  await isUserLogged(req);
   const query = useQuery(req);
 
   if (!query['categories[]']) {
     return [];
   }
 
-  const prisma = new PrismaClient();
-  const technologies = await prisma.technology.findMany({
-    where: {
-      categoryId: { in: [...new Set(query['categories[]'])].map((x) => Number(x.toString())) }
-    }
-  });
-
-  await prisma.$disconnect();
+  const technologies = findTechnologiesByCategories([...new Set(query['categories[]'])]);
 
   return technologies;
 };
