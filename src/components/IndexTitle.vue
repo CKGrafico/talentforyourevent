@@ -57,8 +57,12 @@ changeOrderOfTechnologies();
     position: absolute;
     height: calc($technology-size + 0.5rem);
     width: 100%;
-    max-width: 25rem;
+    max-width: 15rem;
     overflow: hidden;
+
+    @media screen and (min-width: value($media, s)) {
+      max-width: 25rem;
+    }
   }
 
   &__technology {

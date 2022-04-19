@@ -22,11 +22,7 @@ function getMarkdown(text = '') {
 
 async function getTechnologies() {
   try {
-    const response = await useFetch('/api/wizard/technologies-random?take=5', {
-      headers: {
-        [GITHUB_TOKEN]: useCookie(GITHUB_TOKEN).value
-      }
-    });
+    const response = await useFetch('/api/wizard/technologies-random?take=5');
     technologies.value = response.data;
   } catch (e) {
     console.error(e);
@@ -116,9 +112,14 @@ $logo-size: 15rem;
   &__summary {
     font-size: value($font-size, l);
     max-width: 50rem;
-    line-height: 1.65rem;
+    line-height: 1.7rem;
     text-align: justify;
     margin-bottom: 2rem;
+    padding: 0 1rem;
+
+    @media screen and (min-width: value($media, s)) {
+      line-height: 1.65rem;
+    }
   }
 
   &__actions {
