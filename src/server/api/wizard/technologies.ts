@@ -1,15 +1,17 @@
 import { useQuery } from 'h3';
-import { findTechnologiesByCategories, isUserLogged } from '~/server/services';
+import { addSearchTimeToUserSearcher, findTechnologiesByCategories, isUserLogged } from '~/server/services';
 
 export default async (req, res) => {
-  await isUserLogged(req);
+  const user = await isUserLogged(req);
   const query = useQuery(req);
 
   if (!query['categories[]']) {
     return [];
   }
 
-  const technologies = findTechnologiesByCategories([...new Set(query['categories[]'])]);
+  const technologies = await findTechnologiesByCategories([...new Set(query['categories[]'])]);
+
+  await addSearchTimeToUserSearcher(user.login);
 
   return technologies;
 };
