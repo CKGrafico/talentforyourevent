@@ -4,6 +4,7 @@ import { GITHUB_TOKEN } from '~/helpers';
 export const wizardEventTypes = ref(null);
 export const wizardCategories = ref(null);
 export const wizardTechnologies = ref(null);
+export const wizardSpeakers = ref(null);
 
 export async function getEventTypes() {
   try {
@@ -36,7 +37,7 @@ export async function getWizardCategories() {
 export async function getWizardTechnologies(categories) {
   try {
     const response = await useFetch(
-      `/api/wizard/technologies?${qs.stringify({ categories: categories }, { arrayFormat: 'brackets' })}`,
+      `/api/wizard/technologies?${qs.stringify({ categories }, { arrayFormat: 'brackets' })}`,
       {
         headers: {
           [GITHUB_TOKEN]: useCookie(GITHUB_TOKEN).value
@@ -45,6 +46,23 @@ export async function getWizardTechnologies(categories) {
     );
 
     wizardTechnologies.value = response.data;
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+export async function getWizardSpeakers(technologies, categories) {
+  try {
+    const response = await useFetch(
+      `/api/wizard/speakers?${qs.stringify({ categories, technologies }, { arrayFormat: 'brackets' })}`,
+      {
+        headers: {
+          [GITHUB_TOKEN]: useCookie(GITHUB_TOKEN).value
+        }
+      }
+    );
+
+    wizardSpeakers.value = response.data;
   } catch (e) {
     console.error(e);
   }

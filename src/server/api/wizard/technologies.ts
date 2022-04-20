@@ -1,5 +1,5 @@
 import { useQuery } from 'h3';
-import { addSearchTimeToUserSearcher, findTechnologiesByCategories, isUserLogged } from '~/server/services';
+import { findTechnologiesByCategories, isUserLogged } from '~/server/services';
 
 export default async (req, res) => {
   const user = await isUserLogged(req);
@@ -10,8 +10,6 @@ export default async (req, res) => {
   }
 
   const technologies = await findTechnologiesByCategories([...new Set(query['categories[]'])]);
-
-  await addSearchTimeToUserSearcher(user.login);
 
   return technologies;
 };

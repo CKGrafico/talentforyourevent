@@ -27,8 +27,9 @@ function onClickPreviousStep() {
   wizardStore.setStep(WizardStep.Categories);
 }
 
-function onClickNextStep() {
-  alert('Pronto estará lista nuestra aplicación!');
+async function onClickNextStep() {
+  const speakers = await getWizardSpeakers(wizardStore.technologies, wizardStore.categories);
+  debugger;
 }
 
 await getWizardTechnologies(wizardStore.categories);
