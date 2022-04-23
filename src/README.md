@@ -37,6 +37,10 @@ npx prisma db push
 npx prisma db seed
 ```
 
+```bash
+npx prisma generate
+```
+
 ## Development
 
 Start the development server on http://localhost:3000

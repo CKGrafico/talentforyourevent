@@ -16,7 +16,7 @@ model User {
   categories    Category[]
   eventTypes    EventType[]
   technologies  Technology[]
-  userSearchers UserSearcher[]
+  userEvents    UserEvent[]
 }
 
 model EventType {
@@ -43,7 +43,7 @@ model Technology {
   users      User[]
 }
 
-model UserSearcher {
+model UserEvent {
   id           Int      @id @default(autoincrement())
   github       String   @unique @db.VarChar(255)
   queriesToday Int      @default(0)

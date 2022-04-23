@@ -29,6 +29,10 @@ export default async (req, res) => {
     user = await githubFetch<User>('/user', {}, useGithubCookie().value);
   }
 
-  await saveLastLoginUserSearcherAndCheckQueriesToday(user.login);
-  return sendRedirect(res, '/wizard');
+  try {
+    await saveLastLoginUserSearcherAndCheckQueriesToday(user.login);
+    return sendRedirect(res, '/wizard');
+  } catch {
+    return sendRedirect(res, '/limit');
+  }
 };

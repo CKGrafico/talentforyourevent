@@ -28,5 +28,8 @@
       "title": "¿Qué tecnologías te gustaría ver durante el evento?",
       "subtitle": "Puedes seleccionar hasta 5 tecnologías de forma opcional."
     }
+  },
+  "limit": {
+    "title": "Lo sentimos, el máximo de búsquedas permitidas al día es de 3, por favor vuelve mañana :)"
   }
 }
