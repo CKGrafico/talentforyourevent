@@ -1,9 +1,9 @@
 import prismaClient from '@prisma/client';
-import { getAllCategories, isUserLogged } from '~/server/services';
+import { getAllCategories, getUserFromServer } from '~/server/services';
 const { PrismaClient } = prismaClient;
 
 export default async (req, res) => {
-  await isUserLogged(req);
+  await getUserFromServer(req);
 
   const categories = await getAllCategories();
 

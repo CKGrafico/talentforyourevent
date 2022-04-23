@@ -1,8 +1,8 @@
 import { useQuery } from 'h3';
-import { getRandomSpeakersFromTechnologiesAndCategories, isUserLogged } from '~/server/services';
+import { getRandomSpeakersFromTechnologiesAndCategories, getUserFromServer } from '~/server/services';
 
 export default async (req, res) => {
-  const user = await isUserLogged(req);
+  const user = await getUserFromServer(req);
   const query = useQuery(req);
 
   if (!query['technologies[]'] || !query['categories[]']) {

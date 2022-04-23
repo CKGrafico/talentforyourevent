@@ -13,6 +13,7 @@ const locales = fs.readdirSync('locales').map((file) => {
 export default defineNuxtConfig({
   publicRuntimeConfig: {
     GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
+    IS_OFFLINE: process.env.IS_OFFLINE,
     DATABASE_URL: process.env.DATABASE_URL
   },
   buildModules: ['@vueuse/nuxt', '@pinia/nuxt'],

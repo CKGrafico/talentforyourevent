@@ -1,8 +1,8 @@
 import { useQuery } from 'h3';
-import { findTechnologiesByCategories, isUserLogged } from '~/server/services';
+import { findTechnologiesByCategories, getUserFromServer } from '~/server/services';
 
 export default async (req, res) => {
-  const user = await isUserLogged(req);
+  const user = await getUserFromServer(req);
   const query = useQuery(req);
 
   if (!query['categories[]']) {

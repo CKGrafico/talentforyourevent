@@ -1,7 +1,12 @@
 import { createError } from 'h3';
 import { githubFetch, GITHUB_TOKEN } from '~/helpers';
+import { User } from '~/models';
 
-export async function isUserLogged(req): Promise<{ login: string }> {
+export async function getUserFromServer(req): Promise<User> {
+  if (process.env.IS_OFFLINE) {
+    return { login: 'fake_user' } as User;
+  }
+
   try {
     return await githubFetch('/user', {}, req.headers[GITHUB_TOKEN]);
   } catch {

@@ -1,9 +1,9 @@
 import prismaClient from '@prisma/client';
-import { getAllEventTypes, isUserLogged } from '~/server/services';
+import { getAllEventTypes, getUserFromServer } from '~/server/services';
 const { PrismaClient } = prismaClient;
 
 export default async (req, res) => {
-  await isUserLogged(req);
+  await getUserFromServer(req);
 
   const events = await getAllEventTypes();
 
