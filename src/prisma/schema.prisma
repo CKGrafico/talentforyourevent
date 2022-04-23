@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,43 +8,46 @@ datasource db {
 }
 
 model User {
-  id           Int          @id @default(autoincrement())
-  twitter      String       @unique @db.VarChar(255)
-  github       String       @unique @db.VarChar(255)
-  website      String       @db.VarChar(255)
-  biography    String       @db.VarChar(800)
-  eventTypes   EventType[]
-  categories   Category[]
-  technologies Technology[]
+  id            Int            @id @default(autoincrement())
+  twitter       String         @unique @db.VarChar(255)
+  github        String         @unique @db.VarChar(255)
+  website       String         @db.VarChar(255)
+  biography     String         @db.VarChar(800)
+  categories    Category[]
+  eventTypes    EventType[]
+  technologies  Technology[]
+  userSearchers UserSearcher[]
 }
 
 model EventType {
   id    Int    @id @default(autoincrement())
   name  String @unique @db.VarChar(255)
+  icon  String @db.VarChar(4000)
   users User[]
-  icon String  @db.VarChar(4000)
 }
 
 model Category {
   id         Int          @id @default(autoincrement())
   name       String       @unique @db.VarChar(255)
-  users      User[]
+  icon       String       @db.VarChar(4000)
   Technology Technology[]
-  icon String  @db.VarChar(4000)
+  users      User[]
 }
 
 model Technology {
   id         Int      @id @default(autoincrement())
   name       String   @unique @db.VarChar(255)
-  users      User[]
-  category   Category @relation(fields: [categoryId], references: [id])
   categoryId Int
-  icon String  @db.VarChar(4000)
+  icon       String   @db.VarChar(4000)
+  category   Category @relation(fields: [categoryId], references: [id])
+  users      User[]
 }
 
-model Searcher {
-  id           Int          @id @default(autoincrement())
-  github       String       @unique @db.VarChar(255)
-  queriesToday Int          @default(0)
-  lastQuery    DateTime     @db.DateTime
+model UserSearcher {
+  id           Int      @id @default(autoincrement())
+  github       String   @unique @db.VarChar(255)
+  queriesToday Int      @default(0)
+  lastQuery    DateTime @db.DateTime
+  lastLogin    DateTime @db.DateTime
+  users        User[]
 }

@@ -1,5 +1,7 @@
 import { sendRedirect, setCookie, useQuery } from 'h3';
-import { GITHUB_TOKEN } from '~/helpers';
+import { githubFetch, GITHUB_TOKEN } from '~/helpers';
+import { FakeUser, User } from '~/models';
+import { saveLastLoginUserSearcherAndCheckQueriesToday } from '~/server/services';
 
 export default async (req, res) => {
   const { code } = useQuery(req);
@@ -8,20 +10,25 @@ export default async (req, res) => {
     return sendRedirect(res, '/');
   }
 
-  const response: any = await $fetch('https://github.com/login/oauth/access_token', {
-    method: 'POST',
-    body: {
-      client_id: process.env.GITHUB_CLIENT_ID,
-      client_secret: process.env.GITHUB_CLIENT_SECRET,
-      code
-    }
-  });
+  let user = FakeUser;
+  if (!process.env.IS_OFFLINE) {
+    const response: any = await $fetch('https://github.com/login/oauth/access_token', {
+      method: 'POST',
+      body: {
+        client_id: process.env.GITHUB_CLIENT_ID,
+        client_secret: process.env.GITHUB_CLIENT_SECRET,
+        code
+      }
+    });
 
-  if (response.error) {
-    return sendRedirect(res, '/');
+    if (response.error) {
+      return sendRedirect(res, '/');
+    }
+
+    setCookie(res, GITHUB_TOKEN, response.access_token, { path: '/' });
+    user = await githubFetch<User>('/user', {}, useGithubCookie().value);
   }
 
-  setCookie(res, GITHUB_TOKEN, response.access_token, { path: '/' });
-
+  await saveLastLoginUserSearcherAndCheckQueriesToday(user.login);
   return sendRedirect(res, '/wizard');
 };

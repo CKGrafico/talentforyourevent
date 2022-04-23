@@ -1,7 +1,7 @@
 // From https://github.com/Atinux/discuss
 
 import { githubFetch, GITHUB_COOKIE, GITHUB_TOKEN } from '~/helpers';
-import { User } from '~/models';
+import { FakeUser, User } from '~/models';
 
 export const useGithubCookie = () => useCookie(GITHUB_TOKEN);
 
@@ -9,7 +9,7 @@ export const useGithubUser = async () => {
   const { IS_OFFLINE } = useRuntimeConfig();
 
   if (IS_OFFLINE) {
-    return ref({ login: 'fake_user' } as User);
+    return ref(FakeUser);
   }
 
   const cookie = useGithubCookie();
@@ -31,7 +31,7 @@ export const githubLogin = () => {
   let url = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=public_repo`;
 
   if (IS_OFFLINE) {
-    url = '/wizard';
+    url = '/api/github/callback?code=offline';
   }
 
   window.location.replace(url);
