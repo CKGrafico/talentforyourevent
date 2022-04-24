@@ -1,7 +1,7 @@
 import { sendRedirect, setCookie, useQuery } from 'h3';
 import { githubFetch, GITHUB_TOKEN } from '~/helpers';
 import { FakeUser, User } from '~/models';
-import { saveLastLoginUserSearcherAndCheckQueriesToday } from '~/server/services';
+import { saveLastLoginUserEventAndCheckQueriesToday } from '~/server/services';
 
 export default async (req, res) => {
   const { code } = useQuery(req);
@@ -30,7 +30,7 @@ export default async (req, res) => {
   }
 
   try {
-    await saveLastLoginUserSearcherAndCheckQueriesToday(user.login);
+    await saveLastLoginUserEventAndCheckQueriesToday(user.login);
     return sendRedirect(res, '/wizard');
   } catch {
     return sendRedirect(res, '/limit');
