@@ -1,12 +1,9 @@
-import prismaClient from '@prisma/client';
 import { addDays, differenceInDays, startOfDay } from 'date-fns';
-const { PrismaClient } = prismaClient;
+import { prisma } from './db';
 
 export const MAX_QUERIES_DAY = 3;
 
 export async function getUserEvent(userLogin: string) {
-  const prisma = new PrismaClient();
-
   const userEvent = await prisma.userEvent.findFirst({
     where: {
       github: userLogin
@@ -19,7 +16,6 @@ export async function getUserEvent(userLogin: string) {
 }
 
 export async function saveLastLoginUserEventAndCheckQueriesToday(userLogin: string) {
-  const prisma = new PrismaClient();
   const today = startOfDay(new Date());
 
   const userEvent = await prisma.userEvent.findFirst({
@@ -52,7 +48,6 @@ export async function saveLastLoginUserEventAndCheckQueriesToday(userLogin: stri
 }
 
 export async function addSearchTimeToUserEvent(userLogin: string) {
-  const prisma = new PrismaClient();
   const today = startOfDay(new Date());
 
   const userEvent = await prisma.userEvent.findFirst({

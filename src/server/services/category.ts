@@ -1,8 +1,6 @@
-import prismaClient from '@prisma/client';
-const { PrismaClient } = prismaClient;
+import { prisma } from './db';
 
 export async function getAllCategories() {
-  const prisma = new PrismaClient();
   const categories = await prisma.category.findMany();
 
   await prisma.$disconnect();

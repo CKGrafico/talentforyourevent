@@ -1,8 +1,6 @@
-import prismaClient from '@prisma/client';
-const { PrismaClient } = prismaClient;
+import { prisma } from './db';
 
 export async function getRandomSpeakersFromTechnologiesAndCategories(technologies: string[], categories: string[]) {
-  const prisma = new PrismaClient();
   const speakers = await prisma.user.findMany({
     where: {
       OR: [

@@ -1,8 +1,6 @@
-import prismaClient from '@prisma/client';
-const { PrismaClient } = prismaClient;
+import { prisma } from './db';
 
 export async function findTechnologiesByCategories(categories: string[]) {
-  const prisma = new PrismaClient();
   const technologies = await prisma.technology.findMany({
     where: {
       categoryId: { in: categories.map((x) => Number(x.toString())) }
@@ -15,8 +13,6 @@ export async function findTechnologiesByCategories(categories: string[]) {
 }
 
 export async function getRandomTechnologies(take: number) {
-  const prisma = new PrismaClient();
-
   const itemCount = await prisma.technology.count();
   const skip = Math.max(0, Math.floor(Math.random() * itemCount) - take);
 

@@ -1,4 +1,5 @@
 export * from './category';
+export * from './db';
 export * from './event-type';
 export * from './speaker';
 export * from './technology';

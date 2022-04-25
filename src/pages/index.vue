@@ -41,6 +41,8 @@ $logo-size: 15rem;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  max-width: 100vw;
+  overflow-x: hidden;
 
   &__hero {
     margin-top: 2rem;
