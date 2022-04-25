@@ -1,5 +1,9 @@
 import { useQuery } from 'h3';
-import { getRandomSpeakersFromTechnologiesAndCategories, getUserFromServer } from '~/server/services';
+import {
+  addSearchTimeToUserEvent,
+  getRandomSpeakersFromTechnologiesAndCategories,
+  getUserFromServer
+} from '~/server/services';
 
 export default async (req, res) => {
   const user = await getUserFromServer(req);
@@ -8,6 +12,8 @@ export default async (req, res) => {
   if (!query['technologies[]'] || !query['categories[]']) {
     return [];
   }
+
+  await addSearchTimeToUserEvent(user.login);
 
   const speakers = await getRandomSpeakersFromTechnologiesAndCategories(
     [...new Set(query['technologies[]'])],

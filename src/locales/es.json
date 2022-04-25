@@ -1,6 +1,7 @@
 {
   "header": {
-    "logout": "Clica para cerrar sesión"
+    "logout": "Haz click para cerrar sesión",
+    "pending": "Tienes {0} más búsquedas posibles hoy"
   },
   "home": {
     "title": "Talento para tu evento de ",

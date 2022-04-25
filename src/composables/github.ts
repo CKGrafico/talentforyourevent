@@ -3,7 +3,7 @@
 import { githubFetch, GITHUB_COOKIE, GITHUB_TOKEN } from '~/helpers';
 import { FakeUser, User } from '~/models';
 
-export const useGithubCookie = () => useCookie(GITHUB_TOKEN);
+const useGithubCookie = () => useCookie(GITHUB_TOKEN);
 
 export const useGithubUser = async () => {
   const { IS_OFFLINE } = useRuntimeConfig();
@@ -16,8 +16,16 @@ export const useGithubUser = async () => {
   const user = useState<User>(GITHUB_COOKIE);
 
   if (cookie.value && !user.value) {
-    user.value = await githubFetch('/user', {}, useGithubCookie().value);
+    user.value = await githubFetch('/user', {}, cookie.value);
   }
+
+  const userInfoResponse = await $fetch('/api/github/user-info', {
+    headers: {
+      [GITHUB_TOKEN]: cookie.value
+    }
+  });
+
+  user.value = { ...user.value, ...userInfoResponse };
 
   return user;
 };

@@ -11,6 +11,7 @@ export default async (req, res) => {
   }
 
   let user = FakeUser;
+
   if (!process.env.IS_OFFLINE) {
     const response: any = await $fetch('https://github.com/login/oauth/access_token', {
       method: 'POST',
@@ -26,7 +27,7 @@ export default async (req, res) => {
     }
 
     setCookie(res, GITHUB_TOKEN, response.access_token, { path: '/' });
-    user = await githubFetch<User>('/user', {}, useGithubCookie().value);
+    user = await githubFetch<User>('/user', {}, response.access_token);
   }
 
   try {

@@ -4,6 +4,20 @@ const { PrismaClient } = prismaClient;
 
 export const MAX_QUERIES_DAY = 3;
 
+export async function getUserEvent(userLogin: string) {
+  const prisma = new PrismaClient();
+
+  const userEvent = await prisma.userEvent.findFirst({
+    where: {
+      github: userLogin
+    }
+  });
+
+  await prisma.$disconnect();
+
+  return userEvent;
+}
+
 export async function saveLastLoginUserEventAndCheckQueriesToday(userLogin: string) {
   const prisma = new PrismaClient();
   const today = startOfDay(new Date());
@@ -37,13 +51,13 @@ export async function saveLastLoginUserEventAndCheckQueriesToday(userLogin: stri
   await prisma.$disconnect();
 }
 
-export async function addSearchTimeToUserEvent(user: string) {
+export async function addSearchTimeToUserEvent(userLogin: string) {
   const prisma = new PrismaClient();
   const today = startOfDay(new Date());
 
   const userEvent = await prisma.userEvent.findFirst({
     where: {
-      github: user
+      github: userLogin
     }
   });
 
@@ -55,7 +69,7 @@ export async function addSearchTimeToUserEvent(user: string) {
 
   await prisma.userEvent.update({
     where: {
-      github: user
+      github: userLogin
     },
     data: {
       lastQuery: today,

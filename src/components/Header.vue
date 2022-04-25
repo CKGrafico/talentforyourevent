@@ -45,7 +45,8 @@ const user = await useGithubUser();
     color: value($color-primary, brighter);
   }
 
-  &__name {
+  &__name,
+  &__pending {
     color: value($color-primary, brighter);
     cursor: pointer;
     font-size: value($font-size, s);
@@ -55,6 +56,10 @@ const user = await useGithubUser();
     &:hover {
       color: value($color-primary, brightest);
     }
+  }
+
+  &__pending {
+    font-weight: value($font-weight, bold);
   }
 }
 </style>
@@ -69,6 +74,9 @@ const user = await useGithubUser();
     <div class="header__column">
       <img class="header__avatar" :src="user.avatar_url" />
       <span class="header__name" @click="logout" :title="$t('header.logout')"> {{ user.login }} </span>
+      <span v-if="user.pendingQueries" :title="$t('header.pending', [user.pendingQueries])" class="header__pending"
+        >({{ user.pendingQueries }})</span
+      >
     </div>
   </div>
 </template>
