@@ -1,7 +1,7 @@
 ---
 name: Suggest new Category or Technologies for the platform
 about: Template to suggest a new category or technology to use in the users template
-title: Suggest new category {categoryName}
+title: Suggest new category or technologies {categoryName}
 labels: Draft, Category
 assignees: ""
 ---
