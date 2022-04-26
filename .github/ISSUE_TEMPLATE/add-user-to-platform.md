@@ -39,6 +39,14 @@ Once you finish filling the form, please add a comment and we will remove the **
 
 #### Technologies
 <details>
+  <summary>Agile</summary>
+  
+- [ ] Confluence
+- [ ] Jira
+- [ ] Kanban
+- [ ] Scrum
+</details>
+<details>
   <summary>Backend</summary>
   
 - [ ] Java
@@ -53,11 +61,26 @@ Once you finish filling the form, please add a comment and we will remove the **
 - [ ] Azure
 </details>
 <details>
+  <summary>Devops</summary>
+  
+- [ ] Azure DevOps
+- [ ] Github Actions
+- [ ] Jenkins
+- [ ] Travis CI
+</details>
+<details>
   <summary>Frontend</summary>
   
 - [ ] JavaScript
 - [ ] TypeScript
 - [ ] Layout
+</details>
+<details>
+  <summary>IoT</summary>
+  
+- [ ] Arduino
+- [ ] Raspberry Pi
+- [ ] SmartThings
 </details>
 <details>
   <summary>Mobile</summary>
@@ -67,6 +90,23 @@ Once you finish filling the form, please add a comment and we will remove the **
 - [ ] React Native
 - [ ] Swift
 - [ ] Xamarin
+</details>
+<details>
+  <summary>Security</summary>
+  
+- [ ] Fortify
+</details>
+<details>
+  <summary>User Experience</summary>
+  
+- [ ] Figma
+- [ ] Inkscape
+</details>
+<details>
+  <summary>User Interface</summary>
+  
+- [ ] Figma
+- [ ] Inkscape
 </details>
 <details>
   <summary>Danger Zone</summary>
