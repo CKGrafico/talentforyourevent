@@ -56,7 +56,7 @@ async function main() {
   const technologies = [
     {
       category: 'Agile',
-      technologies: []
+      technologies: [getIcon('Confluence'), getIcon('Jira'), getIcon('Kanban'), getIcon('Scrum')]
     },
     {
       category: 'Backend',
@@ -85,7 +85,7 @@ async function main() {
     },
     {
       category: 'Devops',
-      technologies: []
+      technologies: [getIcon('Azure DevOps'), getIcon('Github Actions'), getIcon('Jenkins'), getIcon('Travis CI')]
     },
     {
       category: 'Frontend',
@@ -97,7 +97,7 @@ async function main() {
     },
     {
       category: 'IoT',
-      technologies: []
+      technologies: [getIcon('Arduino'), getIcon('Raspberry Pi'), getIcon('SmartThings')]
     },
     {
       category: 'Mobile',
@@ -111,15 +111,15 @@ async function main() {
     },
     {
       category: 'Security',
-      technologies: []
+      technologies: [getIcon('Fortify')]
     },
     {
       category: 'User Experience',
-      technologies: []
+      technologies: [getIcon('Figma'), getIcon('Inkscape')]
     },
     {
       category: 'User Interface',
-      technologies: []
+      technologies: [getIcon('Figma'), getIcon('Inkscape')]
     },
     {
       category: 'Videogames',
