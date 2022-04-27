@@ -4,7 +4,6 @@ import { GITHUB_TOKEN } from '~/helpers';
 export const wizardEventTypes = ref(null);
 export const wizardCategories = ref(null);
 export const wizardTechnologies = ref(null);
-export const wizardSpeakers = ref(null);
 
 export async function getEventTypes() {
   try {
@@ -62,7 +61,21 @@ export async function getWizardSpeakers(technologies, categories) {
       }
     );
 
-    wizardSpeakers.value = response.data;
+    return response.data;
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+export async function getSpeakerLink(id) {
+  try {
+    const response = await useFetch(`/api/wizard/speaker?id=${id}`, {
+      headers: {
+        [GITHUB_TOKEN]: useCookie(GITHUB_TOKEN).value
+      }
+    });
+
+    return response.data;
   } catch (e) {
     console.error(e);
   }
