@@ -3,6 +3,7 @@
 
 /* Vendor */
 @import './vendor/normalize';
+@import './vendor/skeleton';
 
 /* Components */
 @import './components/button';

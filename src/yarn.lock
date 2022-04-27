@@ -9,12 +9,6 @@
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.0"
 
-date-fns@^2.17.0:
-  version "2.26.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.26.0.tgz#fa45305543c392c4f914e50775fd2a4461e60fbd"
-  integrity sha512-VQI812dRi3cusdY/fhoBKvc6l2W8BPWU1FNVnFH9Nttjx4AFBRzfSVb/Eyc7jBT6e9sg1XtAGsYpBQ6c/jygbg==
-
-
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.16.7":
   version "7.16.7"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.16.7.tgz#44416b6bd7624b998f5b1af5d470856c40138789"
@@ -2134,6 +2128,11 @@ data-uri-to-buffer@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/data-uri-to-buffer/-/data-uri-to-buffer-4.0.0.tgz#b5db46aea50f6176428ac05b73be39a57701a64b"
   integrity sha512-Vr3mLBA8qWmcuschSLAOogKgQ/Jwxulv3RNE4FXnYWRGujzrRWQI4m12fQqRkwX06C0KanhLr4hK+GydchZsaA==
+
+date-fns@^2.17.0:
+  version "2.26.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.26.0.tgz#fa45305543c392c4f914e50775fd2a4461e60fbd"
+  integrity sha512-VQI812dRi3cusdY/fhoBKvc6l2W8BPWU1FNVnFH9Nttjx4AFBRzfSVb/Eyc7jBT6e9sg1XtAGsYpBQ6c/jygbg==
 
 date-format@0.0.2:
   version "0.0.2"
@@ -6472,6 +6471,11 @@ simple-icons@^6.17.0:
   version "6.17.0"
   resolved "https://registry.yarnpkg.com/simple-icons/-/simple-icons-6.17.0.tgz#1819bf7decb526159263fb1b5d959ad41719868e"
   integrity sha512-I9szHgKC67Mr5vg7jvzdVBqLAQsnmuLB0b+aUZ69E6ZP4FmTLYNdhgnuP/w7cFKc2Gt1oGqkr7wSSJcuTXQY0A==
+
+skeleton-elements@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/skeleton-elements/-/skeleton-elements-4.0.0.tgz#44bbe97ac957b52f9778165c2548e44140357bf0"
+  integrity sha512-ctu/bKsWvq1stmvaNDsaZI+tnttgHfTf1FJq7ZLL0N/g9SDTf1ulOIr/fTIbWSUrpqmC2BbKPDyd1h8JmGfV/Q==
 
 slash@^1.0.0:
   version "1.0.0"

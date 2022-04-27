@@ -31,6 +31,8 @@ checkIfUserIsLogged(user);
   &__subtitle {
     text-align: center;
     font-weight: value($font-weight, semibold);
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 0.5rem;
   }
 
@@ -69,21 +71,21 @@ checkIfUserIsLogged(user);
     <template v-if="wizardStore.currentStep === WizardStep.Events">
       <Suspense>
         <WizardStepEvent />
-        <template #fallback> Loading... </template>
+        <template #fallback> <WizardLoading /> </template>
       </Suspense>
     </template>
 
     <template v-if="wizardStore.currentStep === WizardStep.Categories">
       <Suspense>
         <WizardStepCategory />
-        <template #fallback> Loading... </template>
+        <template #fallback> <WizardLoading /> </template>
       </Suspense>
     </template>
 
     <template v-if="wizardStore.currentStep === WizardStep.Technologies">
       <Suspense>
         <WizardStepTechnology />
-        <template #fallback> Loading... </template>
+        <template #fallback> <WizardLoading /> </template>
       </Suspense>
     </template>
   </div>

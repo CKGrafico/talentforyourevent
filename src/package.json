@@ -50,6 +50,7 @@
     "normalize.css": "^8.0.1",
     "pinia": "^2.0.13",
     "qs": "^6.10.3",
+    "skeleton-elements": "^4.0.0",
     "vanilla-tilt": "^1.7.2",
     "vue": "^3.2.25"
   },
