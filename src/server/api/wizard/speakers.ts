@@ -1,6 +1,7 @@
 import { useQuery } from 'h3';
 import {
   addSearchTimeToUserEvent,
+  addSpeakersToLastSearchOfUserEvent,
   getRandomSpeakersFromTechnologiesAndCategories,
   getUserFromServer
 } from '~/server/services';
@@ -20,7 +21,9 @@ export default async (req, res) => {
     [...new Set(query['categories[]'])]
   );
 
-  // TODO anonymize speakers
+  await addSpeakersToLastSearchOfUserEvent(user.login, speakers);
 
-  return speakers;
+  return speakers.map((x, index) => ({
+    id: index
+  }));
 };

@@ -88,5 +88,12 @@ checkIfUserIsLogged(user);
         <template #fallback> <WizardLoading /> </template>
       </Suspense>
     </template>
+
+    <template v-if="wizardStore.currentStep === WizardStep.Results">
+      <Suspense>
+        <WizardStepResult />
+        <template #fallback> <WizardLoading /> </template>
+      </Suspense>
+    </template>
   </div>
 </template>

@@ -28,8 +28,7 @@ function onClickPreviousStep() {
 }
 
 async function onClickNextStep() {
-  const speakers = await getWizardSpeakers(wizardStore.technologies, wizardStore.categories);
-  debugger;
+  wizardStore.setStep(WizardStep.Results);
 }
 
 await getWizardTechnologies(wizardStore.categories);

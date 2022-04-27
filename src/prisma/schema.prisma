@@ -16,7 +16,6 @@ model User {
   categories    Category[]
   eventTypes    EventType[]
   technologies  Technology[]
-  userEvents    UserEvent[]
 }
 
 model EventType {
@@ -44,10 +43,10 @@ model Technology {
 }
 
 model UserEvent {
-  id           Int      @id @default(autoincrement())
-  github       String   @unique @db.VarChar(255)
-  queriesToday Int      @default(0)
-  lastQuery    DateTime @db.DateTime
-  lastLogin    DateTime @db.DateTime
-  users        User[]
+  id                    Int      @id @default(autoincrement())
+  github                String   @unique @db.VarChar(255)
+  queriesToday          Int      @default(0)
+  lastQuery             DateTime @db.DateTime
+  lastLogin             DateTime @db.DateTime
+  lastUsersSearchIds    String   @db.VarChar(500)
 }

@@ -4,7 +4,8 @@ export async function findTechnologiesByCategories(categories: string[]) {
   const technologies = await prisma.technology.findMany({
     where: {
       categoryId: { in: categories.map((x) => Number(x.toString())) }
-    }
+    },
+    orderBy: [{ name: 'asc' }]
   });
 
   await prisma.$disconnect();

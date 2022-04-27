@@ -1,7 +1,8 @@
+import { User } from '@prisma/client';
 import { addDays, differenceInDays, startOfDay } from 'date-fns';
 import { prisma } from './db';
 
-export const MAX_QUERIES_DAY = 3;
+export const MAX_QUERIES_DAY = 30;
 
 export async function getUserEvent(userLogin: string) {
   const userEvent = await prisma.userEvent.findFirst({
@@ -40,7 +41,8 @@ export async function saveLastLoginUserEventAndCheckQueriesToday(userLogin: stri
       github: userLogin,
       lastLogin: today,
       lastQuery: addDays(today, -1),
-      queriesToday: 0
+      queriesToday: 0,
+      lastUsersSearchIds: ''
     }
   });
 
@@ -73,6 +75,19 @@ export async function addSearchTimeToUserEvent(userLogin: string) {
         : {
             increment: 1
           }
+    }
+  });
+
+  await prisma.$disconnect();
+}
+
+export async function addSpeakersToLastSearchOfUserEvent(userLogin: string, speakers: User[]) {
+  await prisma.userEvent.update({
+    where: {
+      github: userLogin
+    },
+    data: {
+      lastUsersSearchIds: speakers.map((x) => x.id).join(',')
     }
   });
 
