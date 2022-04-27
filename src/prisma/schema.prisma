@@ -38,7 +38,7 @@ model Technology {
   id         Int      @id @default(autoincrement())
   name       String   @unique @db.VarChar(255)
   categoryId Int
-  icon       String   @db.VarChar(4000)
+  icon       String   @db.VarChar(6000)
   category   Category @relation(fields: [categoryId], references: [id])
   users      User[]
 }

@@ -61,8 +61,30 @@ checkIfUserIsLogged(user);
 
 <template>
   <div v-if="user" class="wizard">
-    <WizardStepEvent v-if="wizardStore.currentStep === WizardStep.Events" />
-    <WizardStepCategory v-if="wizardStore.currentStep === WizardStep.Categories" />
-    <WizardStepTechnology v-if="wizardStore.currentStep === WizardStep.Technologies" />
+    <WizardBreadCrumb
+      :items="Object.values(WizardStep).filter((x) => typeof x === 'string')"
+      :selected="WizardStep[wizardStore.currentStep]"
+    />
+
+    <template v-if="wizardStore.currentStep === WizardStep.Events">
+      <Suspense>
+        <WizardStepEvent />
+        <template #fallback> Loading... </template>
+      </Suspense>
+    </template>
+
+    <template v-if="wizardStore.currentStep === WizardStep.Categories">
+      <Suspense>
+        <WizardStepCategory />
+        <template #fallback> Loading... </template>
+      </Suspense>
+    </template>
+
+    <template v-if="wizardStore.currentStep === WizardStep.Technologies">
+      <Suspense>
+        <WizardStepTechnology />
+        <template #fallback> Loading... </template>
+      </Suspense>
+    </template>
   </div>
 </template>

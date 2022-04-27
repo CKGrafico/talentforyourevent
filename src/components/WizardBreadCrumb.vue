@@ -18,10 +18,12 @@ const props = defineProps({
 .breadcrumb {
   display: flex;
   justify-content: flex-start;
+  width: 100%;
+  padding: 0 1rem;
 
   &__list {
     list-style: none;
-    padding: 0.5rem;
+    padding: 0.5rem 0;
     margin: 0;
   }
 

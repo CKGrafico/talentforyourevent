@@ -56,7 +56,24 @@ async function main() {
   const technologies = [
     {
       category: 'Agile',
-      technologies: [getIcon('Confluence'), getIcon('Jira'), getIcon('Kanban'), getIcon('Scrum')]
+      technologies: [
+        {
+          name: 'Confluence',
+          icon: getIcon('Confluence')
+        },
+        {
+          name: 'Jira',
+          icon: getIcon('Jira')
+        },
+        {
+          name: 'Kanban',
+          icon: getIcon('Trello')
+        },
+        {
+          name: 'Scrum',
+          icon: getIcon('Azure DevOps')
+        }
+      ]
     },
     {
       category: 'Backend',
@@ -85,7 +102,12 @@ async function main() {
     },
     {
       category: 'Devops',
-      technologies: [getIcon('Azure DevOps'), getIcon('Github Actions'), getIcon('Jenkins'), getIcon('Travis CI')]
+      technologies: [
+        { name: 'Azure DevOps', icon: getIcon('Azure DevOps') },
+        { name: 'Github Actions', icon: getIcon('Github') },
+        { name: 'Jenkins', icon: getIcon('Jenkins') },
+        { name: 'Travis CI', icon: getIcon('Travis CI') }
+      ]
     },
     {
       category: 'Frontend',
@@ -97,7 +119,11 @@ async function main() {
     },
     {
       category: 'IoT',
-      technologies: [getIcon('Arduino'), getIcon('Raspberry Pi'), getIcon('SmartThings')]
+      technologies: [
+        { name: 'Arduino', icon: getIcon('Arduino') },
+        { name: 'Raspberry Pi', icon: getIcon('Raspberry Pi') },
+        { name: 'SmartThings', icon: getIcon('SmartThings') }
+      ]
     },
     {
       category: 'Mobile',
@@ -111,15 +137,21 @@ async function main() {
     },
     {
       category: 'Security',
-      technologies: [getIcon('Fortify')]
+      technologies: [{ name: 'Fortify', icon: getIcon('Fortran') }]
     },
     {
       category: 'User Experience',
-      technologies: [getIcon('Figma'), getIcon('Inkscape')]
+      technologies: [
+        { name: 'Figma', icon: getIcon('Figma') },
+        { name: 'Inkscape', icon: getIcon('Inkscape') }
+      ]
     },
     {
       category: 'User Interface',
-      technologies: [getIcon('Figma'), getIcon('Inkscape')]
+      technologies: [
+        { name: 'Figma', icon: getIcon('Figma') },
+        { name: 'Inkscape', icon: getIcon('Inkscape') }
+      ]
     },
     {
       category: 'Videogames',
@@ -132,17 +164,21 @@ async function main() {
     }
   ];
   const technologiesUpserts = technologies.map((category) =>
-    category.technologies.map((technology) =>
-      prisma.technology.upsert({
-        where: { name: technology.name },
-        update: { icon: technology.icon },
-        create: {
-          name: technology.name,
-          icon: technology.icon,
-          categoryId: insertedCategories.find((insertedCategory) => category.category === insertedCategory.name).id
-        }
-      })
-    )
+    category.technologies.map(async (technology) => {
+      try {
+        await prisma.technology.upsert({
+          where: { name: technology.name },
+          update: { icon: technology.icon },
+          create: {
+            name: technology.name,
+            icon: technology.icon,
+            categoryId: insertedCategories.find((insertedCategory) => category.category === insertedCategory.name).id
+          }
+        });
+      } catch (e) {
+        throw new Error(`Cannot upsert ${technology.name} - ${e.message}`);
+      }
+    })
   );
   await Promise.all(technologiesUpserts.flat());
 }

@@ -1,7 +1,7 @@
 import { addDays, differenceInDays, startOfDay } from 'date-fns';
 import { prisma } from './db';
 
-export const MAX_QUERIES_DAY = 3;
+export const MAX_QUERIES_DAY = 30;
 
 export async function getUserEvent(userLogin: string) {
   const userEvent = await prisma.userEvent.findFirst({
