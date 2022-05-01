@@ -24,6 +24,8 @@ export default async (req, res) => {
   await addSpeakersToLastSearchOfUserEvent(user.login, speakers);
 
   return speakers.map((x, index) => ({
-    id: index
+    id: index,
+    technologies: x.technologies,
+    categories: x.categories
   }));
 };

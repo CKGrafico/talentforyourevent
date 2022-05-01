@@ -1,5 +1,5 @@
-import { User } from '@prisma/client';
 import { addDays, differenceInDays, startOfDay } from 'date-fns';
+import { UserSpeaker } from '~/models';
 import { prisma } from './db';
 
 export const MAX_QUERIES_DAY = 30;
@@ -81,7 +81,7 @@ export async function addSearchTimeToUserEvent(userLogin: string) {
   await prisma.$disconnect();
 }
 
-export async function addSpeakersToLastSearchOfUserEvent(userLogin: string, speakers: User[]) {
+export async function addSpeakersToLastSearchOfUserEvent(userLogin: string, speakers: UserSpeaker[]) {
   await prisma.userEvent.update({
     where: {
       github: userLogin
