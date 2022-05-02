@@ -14,18 +14,25 @@ export default async (req, res) => {
     return [];
   }
 
+  const technologies = Array.isArray(query['technologies[]'])
+    ? query['technologies[]'].map((x) => Number(x))
+    : [Number(query['technologies[]'])];
+
+  const categories = Array.isArray(query['categories[]'])
+    ? query['categories[]'].map((x) => Number(x))
+    : [Number(query['categories[]'])];
+
   await addSearchTimeToUserEvent(user.login);
 
-  const speakers = await getRandomSpeakersFromTechnologiesAndCategories(
-    [...new Set(query['technologies[]'])],
-    [...new Set(query['categories[]'])]
-  );
+  const speakers = await getRandomSpeakersFromTechnologiesAndCategories(technologies, categories);
 
   await addSpeakersToLastSearchOfUserEvent(user.login, speakers);
 
-  return speakers.map((x, index) => ({
-    id: index,
+  const mappedSpeakers = speakers.map((x, i) => ({
+    id: i,
     technologies: x.technologies,
     categories: x.categories
   }));
+
+  return mappedSpeakers;
 };

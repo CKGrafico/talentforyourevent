@@ -9,7 +9,11 @@ export default async (req, res) => {
     return [];
   }
 
-  const technologies = await findTechnologiesByCategories([...new Set(query['categories[]'])]);
+  const ids = Array.isArray(query['categories[]'])
+    ? query['categories[]'].map((x) => Number(x))
+    : [Number(query['categories[]'])];
+
+  const technologies = await findTechnologiesByCategories(ids);
 
   return technologies;
 };

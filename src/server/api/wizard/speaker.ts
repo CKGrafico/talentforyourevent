@@ -12,7 +12,7 @@ export default async (req, res) => {
   const userEvent = await getUserEvent(user.login);
   const lastUsersSearchIds = userEvent.lastUsersSearchIds?.split(',');
 
-  if (lastUsersSearchIds?.length > 1) {
+  if (lastUsersSearchIds?.length < 1) {
     return null;
   }
 

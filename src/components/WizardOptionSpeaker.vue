@@ -22,7 +22,8 @@ async function loadSpeaker(id) {
   isLoading.value = true;
   const speakerFromServer = await getSpeakerLink(id);
   speaker.value = speakerFromServer;
-  window.open(`https://twitter.com/${speakerFromServer.twitter}`, '_blank');
+
+  window.open(`https://twitter.com/${speakerFromServer.value.twitter}`, '_blank');
   isLoading.value = false;
 }
 
@@ -124,7 +125,7 @@ function onClickOption(id) {
     @click="onClickOption(id)"
   >
     <span class="option__name" v-if="isLoading"> loading... </span>
-    <span class="option__name" v-else-if="speaker.value"> {{ speaker.value.twitter }}</span>
+    <span class="option__name" v-else-if="speaker && speaker.value"> {{ speaker.value.twitter }}</span>
     <span class="option__name" v-else> Click... </span>
   </Tilt>
 </template>

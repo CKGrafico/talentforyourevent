@@ -1,9 +1,9 @@
 import { prisma } from './db';
 
-export async function findTechnologiesByCategories(categories: string[]) {
+export async function findTechnologiesByCategories(categories: number[]) {
   const technologies = await prisma.technology.findMany({
     where: {
-      categoryId: { in: categories.map((x) => Number(x.toString())) }
+      categoryId: { in: categories }
     },
     orderBy: [{ name: 'asc' }]
   });
