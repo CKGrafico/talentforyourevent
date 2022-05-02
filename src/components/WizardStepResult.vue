@@ -12,7 +12,13 @@ const speakers = await getWizardSpeakers(wizardStore.technologies, wizardStore.c
     <h2 class="wizard__subtitle">{{ $t('wizard.speakers.subtitle') }}</h2>
 
     <div class="wizard__options">
-      <WizardOptionSpeaker v-for="{ id } in speakers" :id="id" :key="id" />
+      <WizardOptionSpeaker
+        v-for="{ id, technologies, categories } in speakers"
+        :id="id"
+        :technologies="technologies.map((x) => x.name)"
+        :categories="categories.map((x) => x.name)"
+        :key="id"
+      />
     </div>
   </div>
 </template>

@@ -6,12 +6,21 @@ const props = defineProps({
   id: {
     type: Number,
     required: true
+  },
+  technologies: {
+    type: Array,
+    required: true
+  },
+  categories: {
+    type: Array,
+    required: true
   }
 });
 
 const random = performance.now();
 const isLoading = ref(false);
 const speaker = ref(null);
+const randomUserPick = ref(Math.floor(Math.random() * 9) + 1);
 
 function getColor(value) {
   const hue = [0, 360];
@@ -23,6 +32,8 @@ async function loadSpeaker(id) {
   const speakerFromServer = await getSpeakerLink(id);
   speaker.value = speakerFromServer;
 
+  // Cache image
+  await fetch(`https://unavatar.io/${speaker.value.twitter}`);
   window.open(`https://twitter.com/${speakerFromServer.value.twitter}`, '_blank');
   isLoading.value = false;
 }
@@ -35,84 +46,44 @@ function onClickOption(id) {
 <style scoped>
 @import '~/styles/variables.css';
 .option {
-  $radius: 0.75rem;
-
   align-items: center;
   background-color: value($color-basic, brightest);
   box-shadow: 0 0 0px 2px transparent;
-  border-radius: $radius;
   cursor: pointer;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 1rem;
-  min-height: 8rem;
-  min-width: 14rem;
+  margin: 1vw;
+  min-height: 14rem;
+  width: 80vw;
   padding: 0.35rem;
   transform: perspective(500px);
   transform-style: preserve-3d;
   transition: box-shadow calc(value($time, slow) / 2) value($time, normal);
   position: relative;
   overflow: hidden;
+  padding: 1rem;
 
-  &.is-selected {
-    box-shadow: 0 0 0px 2px value($color-basic, brightest);
+  @media screen and (min-width: value($media, s)) {
+    width: 45vw;
   }
 
-  &__icon {
-    $size: 3rem;
-
-    height: $size;
-    width: $size;
-    text-align: center;
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
-
-    :deep(path) {
-      transition: fill value($time, slow);
-      fill: var(--background);
-    }
+  &__image {
+    max-width: 40%;
+    object-fit: cover;
+    border-radius: 50%;
   }
 
-  &.is-selected &__icon {
-    :deep(path) {
-      fill: var(--foreground);
-    }
+  &__info {
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
   }
 
   &__name {
-    color: value($color-basic, brightest);
-    font-size: value($font-size, m);
-    background-color: var(--background);
-    border-radius: $radius;
-    padding: 0.75rem;
     text-align: center;
-    width: 100%;
-
-    &:before {
-      content: '';
-      width: 90%;
-      height: 0;
-      border-radius: $radius;
-      position: absolute;
-      background-color: var(--background);
-      transition: all value($time, slow);
-      top: 90%;
-      left: 5%;
-      z-index: -1;
-    }
-  }
-
-  &.is-selected &__name {
-    color: var(--foreground);
-    font-weight: value($font-weight, bold);
-
-    &:before {
-      width: 110%;
-      height: 110%;
-      top: -5%;
-      left: -5%;
-    }
+    font-weight: value($font-weight, semibold);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.5rem;
   }
 }
 </style>
@@ -124,8 +95,21 @@ function onClickOption(id) {
     :style="{ '--background': getColor(random).background, '--foreground': getColor(random).foreground }"
     @click="onClickOption(id)"
   >
-    <span class="option__name" v-if="isLoading"> loading... </span>
+    <img class="option__image" v-if="speaker && speaker.value" :src="`https://unavatar.io/${speaker.value.twitter}`" />
+    <img class="option__image" v-else :src="`/images/users/user${randomUserPick}.png`" />
+    <div class="option__info">
+      <span class="option__name" v-if="isLoading"> loading... </span>
+      <span class="option__name" v-else-if="speaker && speaker.value"> {{ speaker.value.twitter }}</span>
+      <span class="option__name" v-else>""Click to reveal"" </span>
+
+      <ul class="option__tags">
+        <li class="option__tag" v-for="name in categories" :key="name">{{ name }}</li>
+        <li class="option__tag" v-for="name in technologies" :key="name">{{ name }}</li>
+      </ul>
+    </div>
+
+    <!-- <span class="option__name" v-if="isLoading"> loading... </span>
     <span class="option__name" v-else-if="speaker && speaker.value"> {{ speaker.value.twitter }}</span>
-    <span class="option__name" v-else> Click... </span>
+    <span class="option__name" v-else> Click... </span> -->
   </Tilt>
 </template>

@@ -8,6 +8,7 @@ const user = await useGithubUser();
 
 useMeta({
   // title: t('message.hello', { msg: '1' })
+  link: [{ rel: 'icon', type: 'image/x-icon', href: '/images/favicon.ico' }]
 });
 </script>
 
