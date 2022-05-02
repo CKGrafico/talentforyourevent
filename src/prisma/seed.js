@@ -30,6 +30,7 @@ async function main() {
     { name: 'Agile', icon: getIcon('Jira') },
     { name: 'Backend', icon: getIcon('StackEdit') },
     { name: 'Cloud', icon: getIcon('Cloudways') },
+    { name: 'Data Science', icon: getIcon('Databricks') },
     { name: 'Devops', icon: getIcon('Terraform') },
     { name: 'Frontend', icon: getIcon('Visual Studio Code') },
     { name: 'IoT', icon: getIcon('SmartThings') },
@@ -98,6 +99,15 @@ async function main() {
         { name: 'AWS', icon: getIcon('Amazon AWS') },
         { name: 'Azure', icon: getIcon('Microsoft Azure') },
         { name: 'Google Cloud', icon: getIcon('Google Cloud') }
+      ]
+    },
+    {
+      category: 'Data Science',
+      technologies: [
+        { name: 'Databricks', icon: getIcon('Databricks') },
+        { name: 'Python', icon: getIcon('Python') },
+        { name: 'R', icon: getIcon('R') },
+        { name: 'TensorFlow', icon: getIcon('TensorFlow') }
       ]
     },
     {

@@ -3,31 +3,34 @@ name: Add User to platform
 about: Template to Add a new user to the platform
 title: Add User {twitter_name} to the platform
 labels: Draft, User
-assignees: ''
-
+assignees: ""
 ---
 
-This template will help you to add a new user to the platform, the **Twitter** and **Github* fields are required and you're not going to be able to change them.
+This template will help you to add a new user to the platform, the **Twitter** and \*_Github_ fields are required and you're not going to be able to change them.
 Please, remember that you cannot add more fields or modify the template below, if you want to do it create a regular issue.
 
 Once you finish filling the form, please add a comment and we will remove the **Draft** label to proceed with the validation.
 
 # ...
-|Key| Value|
-|---|------|
-|Twitter|your_twitter_name_without_at_symbol|
-|Github|your_github_profile|
-|Website|https://your_website_com|
-|Biography|a_short_description_v1_spanish_language_is_recommended|
+
+| Key       | Value                                                  |
+| --------- | ------------------------------------------------------ |
+| Twitter   | your_twitter_name_without_at_symbol                    |
+| Github    | your_github_profile                                    |
+| Website   | https://your_website_com                               |
+| Biography | a_short_description_v1_spanish_language_is_recommended |
 
 #### EventType
+
 - [ ] Onsite
 - [ ] Online
 
 #### Categories
+
 - [ ] Agile
 - [ ] Backend
 - [ ] Cloud
+- [ ] Data Science
 - [ ] Devops
 - [ ] Frontend
 - [ ] IoT
@@ -38,6 +41,7 @@ Once you finish filling the form, please add a comment and we will remove the **
 - [ ] Videogames
 
 #### Technologies
+
 <details>
   <summary>Agile</summary>
   
@@ -67,6 +71,14 @@ Once you finish filling the form, please add a comment and we will remove the **
 - [ ] Github Actions
 - [ ] Jenkins
 - [ ] Travis CI
+</details>
+<details>
+  <summary>Data Science</summary>
+  
+- [ ] Databricks
+- [ ] Python
+- [ ] R
+- [ ] TensorFlow
 </details>
 <details>
   <summary>Frontend</summary>
@@ -116,4 +128,4 @@ Once you finish filling the form, please add a comment and we will remove the **
 
 # ...
 
-- [ ]  Checking this checkbox I confirm that I feel my profile as an underrepresented profile in tech industry (Beta opened only if this checkbox is checked)
+- [ ] Checking this checkbox I confirm that I feel my profile as an underrepresented profile in tech industry (Beta opened only if this checkbox is checked)
