@@ -108,7 +108,7 @@ function onClickOption(id) {
     padding-left: 1rem;
     display: flex;
     height: 100%;
-    padding-top: 10%;
+    padding-top: 5%;
     flex-direction: column;
   }
 
@@ -121,6 +121,15 @@ function onClickOption(id) {
     &::first-letter {
       text-transform: uppercase;
     }
+  }
+
+  &__bio {
+    font-size: value($font-size, s);
+    font-weight: value($font-weight, normal);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   &__tags {
@@ -191,14 +200,21 @@ function onClickOption(id) {
     <img class="option__image" v-if="speaker && speaker.value" :src="`https://unavatar.io/${speaker.value.twitter}`" />
     <img class="option__image" v-else :src="`/images/users/user${randomUserPick}.png`" />
     <div class="option__info">
-      <span class="option__name" v-if="isLoading"> loading... </span>
-      <span class="option__name" v-else-if="speaker && speaker.value"> {{ speaker.value.twitter }}</span>
-      <span class="option__name" v-else>
+      <div class="option__name" v-if="isLoading">
+        <span>{{ $t('common.loading') }}</span>
+        <p class="option__bio"></p>
+      </div>
+      <div class="option__name" v-else-if="speaker && speaker.value">
+        <span>{{ speaker.value.twitter }}</span>
+        <p class="option__bio" :title="speaker.value.biography">{{ speaker.value.biography }}</p>
+      </div>
+      <div class="option__name" v-else>
         <span v-if="revealed >= MAX_SPEAKERS_TO_REVEAL"
           >{{ $t('speaker.max') }}{{ $t(`speaker.adjectives[${randomUserPick}]`) }}</span
         >
         <span v-else>{{ $t('speaker.reveal') }}</span>
-      </span>
+        <p class="option__bio"></p>
+      </div>
 
       <ul class="option__tags">
         <li class="option__tag" v-for="name in categories" :key="name">{{ name }}</li>

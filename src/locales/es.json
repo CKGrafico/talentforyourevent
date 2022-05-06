@@ -1,4 +1,7 @@
 {
+  "common": {
+    "loading": "Cargando..."
+  },
   "header": {
     "logout": "Haz click para cerrar sesión",
     "pending": "Tienes {0} más búsquedas posibles hoy"
