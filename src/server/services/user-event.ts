@@ -70,6 +70,7 @@ export async function addSearchTimeToUserEvent(userLogin: string) {
     },
     data: {
       lastQuery: today,
+      revealedNow: 0,
       queriesToday: isFromYesterday
         ? 1
         : {
@@ -88,6 +89,21 @@ export async function addSpeakersToLastSearchOfUserEvent(userLogin: string, spea
     },
     data: {
       lastUsersSearchIds: speakers.map((x) => x.id).join(',')
+    }
+  });
+
+  await prisma.$disconnect();
+}
+
+export async function addRevealedToUser(userLogin: string) {
+  await prisma.userEvent.update({
+    where: {
+      github: userLogin
+    },
+    data: {
+      revealedNow: {
+        increment: 1
+      }
     }
   });
 

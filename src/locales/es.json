@@ -3,6 +3,12 @@
     "logout": "Haz click para cerrar sesión",
     "pending": "Tienes {0} más búsquedas posibles hoy"
   },
+  "breadcrumb": {
+    "events": "Eventos",
+    "categories": "Categorías",
+    "technologies": "Tecnologías",
+    "results": "Resultados"
+  },
   "home": {
     "title": "Talento para tu evento de ",
     "technology": "Tecnología",
@@ -28,9 +34,29 @@
     "technology": {
       "title": "¿Qué tecnologías te gustaría ver durante el evento?",
       "subtitle": "Puedes seleccionar hasta 5 tecnologías de forma opcional."
+    },
+    "speakers": {
+      "title": "¡Hemos encontrado las personas que buscas!",
+      "subtitle": "Recuerda que puedes desvelar hasta 3 speakers por búsqueda."
     }
   },
   "limit": {
     "title": "Lo sentimos, el máximo de búsquedas permitidas al día es de 3, por favor vuelve mañana :)"
+  },
+  "speaker": {
+    "reveal": "Clica para desvelar...",
+    "max": "Speaker ",
+    "adjectives": [
+      "genial",
+      "alegre",
+      "rockstar",
+      "interesante",
+      "inteligente",
+      "excepcional",
+      "optimista",
+      "feliz",
+      "hábil",
+      "puntual"
+    ]
   }
 }

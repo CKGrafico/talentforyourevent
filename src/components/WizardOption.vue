@@ -117,8 +117,9 @@ function getColor(value) {
 
 <template>
   <Tilt
-    :class="`option ${isSelected ? 'is-selected' : isDisabled ? 'is-disabled' : '' } `"
+    :class="`option ${isSelected ? 'is-selected' : isDisabled ? 'is-disabled' : ''} `"
     :key="id"
+    :id="id"
     :style="{ '--background': getColor(name).background, '--foreground': getColor(name).foreground }"
   >
     <span class="option__icon" v-html="icon"></span>

@@ -1,11 +1,18 @@
 <script setup>
 import { getSpeakerLink } from '#imports';
+import { siGithub, siTwitter } from 'simple-icons/icons';
 import { randomColor } from '~/helpers';
+import { MAX_SPEAKERS_TO_REVEAL } from '~/models';
 
 const props = defineProps({
   id: {
     type: Number,
     required: true
+  },
+  revealed: {
+    type: Number,
+    default: 0,
+    required: false
   },
   technologies: {
     type: Array,
@@ -16,6 +23,8 @@ const props = defineProps({
     required: true
   }
 });
+
+const emit = defineEmits(['reveal']);
 
 const random = performance.now();
 const isLoading = ref(false);
@@ -34,11 +43,16 @@ async function loadSpeaker(id) {
 
   // Cache image
   await fetch(`https://unavatar.io/${speaker.value.twitter}`);
-  window.open(`https://twitter.com/${speakerFromServer.value.twitter}`, '_blank');
+
   isLoading.value = false;
 }
 
 function onClickOption(id) {
+  if (speaker.value || props.revealed >= MAX_SPEAKERS_TO_REVEAL) {
+    return;
+  }
+
+  emit('reveal');
   loadSpeaker(id);
 }
 </script>
@@ -48,7 +62,6 @@ function onClickOption(id) {
 .option {
   align-items: center;
   background-color: value($color-basic, brightest);
-  box-shadow: 0 0 0px 2px transparent;
   cursor: pointer;
   display: flex;
   margin: 1vw;
@@ -57,41 +70,121 @@ function onClickOption(id) {
   padding: 0.35rem;
   transform: perspective(500px);
   transform-style: preserve-3d;
-  transition: box-shadow calc(value($time, slow) / 2) value($time, normal);
+  transition: all value($time, normal);
   position: relative;
   overflow: hidden;
   padding: 1rem;
+
+  &.is-loading {
+    animation: loading 1s infinite linear;
+  }
+
+  @keyframes loading {
+    0% {
+      transform: rotateY(0deg);
+    }
+
+    100% {
+      transform: rotateY(360deg);
+    }
+  }
 
   @media screen and (min-width: value($media, s)) {
     width: 45vw;
   }
 
+  @media screen and (min-width: value($media, m)) {
+    width: 28vw;
+  }
+
   &__image {
-    max-width: 40%;
+    max-width: 35%;
     object-fit: cover;
     border-radius: 50%;
+    margin-right: 1rem;
   }
 
   &__info {
     padding-left: 1rem;
     display: flex;
+    height: 100%;
+    padding-top: 10%;
     flex-direction: column;
   }
 
   &__name {
-    text-align: center;
     font-weight: value($font-weight, semibold);
-    margin-left: auto;
-    margin-right: auto;
+    font-size: value($font-size, l);
+    margin-left: 0;
     margin-bottom: 0.5rem;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &__tags {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-top: 0.5rem;
+  }
+
+  &__tag {
+    display: inline-flex;
+    font-weight: value($font-weight, semibold);
+    margin-right: 1rem;
+    font-size: value($font-size, xs);
+    margin-bottom: 0.25rem;
+    padding: 0.15rem 0.25rem;
+
+    background: value($color-basic, bright);
+    border-radius: 4rem;
+    justify-content: center;
+
+    @media screen and (min-width: value($media, xxl)) {
+      padding: 0.15rem 0.25rem;
+      padding: 0.25rem 0.5rem;
+
+      font-size: value($font-size, s);
+    }
+  }
+
+  &__actions {
+    position: absolute;
+    right: 1rem;
+    bottom: 0.5rem;
+  }
+
+  &__action {
+    margin-left: 0.5rem;
+    transition: value($time, normal);
+
+    &:hover {
+      filter: brightness(1.1);
+    }
+
+    &:deep(svg) {
+      width: 1.5rem;
+    }
+
+    &--twitter:deep(svg) {
+      fill: #1da1f2;
+    }
+
+    &--github:deep(svg) {
+      fill: #181717;
+    }
   }
 }
 </style>
 
 <template>
   <Tilt
-    class="option"
+    :class="`option ${isLoading ? 'is-loading' : ''}`"
     :key="id"
+    :id="id"
+    :disabled="speaker && speaker.value"
     :style="{ '--background': getColor(random).background, '--foreground': getColor(random).foreground }"
     @click="onClickOption(id)"
   >
@@ -100,16 +193,32 @@ function onClickOption(id) {
     <div class="option__info">
       <span class="option__name" v-if="isLoading"> loading... </span>
       <span class="option__name" v-else-if="speaker && speaker.value"> {{ speaker.value.twitter }}</span>
-      <span class="option__name" v-else>""Click to reveal"" </span>
+      <span class="option__name" v-else>
+        <span v-if="revealed >= MAX_SPEAKERS_TO_REVEAL"
+          >{{ $t('speaker.max') }}{{ $t(`speaker.adjectives[${randomUserPick}]`) }}</span
+        >
+        <span v-else>{{ $t('speaker.reveal') }}</span>
+      </span>
 
       <ul class="option__tags">
         <li class="option__tag" v-for="name in categories" :key="name">{{ name }}</li>
         <li class="option__tag" v-for="name in technologies" :key="name">{{ name }}</li>
       </ul>
-    </div>
 
-    <!-- <span class="option__name" v-if="isLoading"> loading... </span>
-    <span class="option__name" v-else-if="speaker && speaker.value"> {{ speaker.value.twitter }}</span>
-    <span class="option__name" v-else> Click... </span> -->
+      <div class="option__actions" v-if="speaker && speaker.value">
+        <a
+          class="option__action option__action--twitter"
+          :href="`https://twitter.com/${speaker.value.twitter}`"
+          target="_blank"
+          v-html="siTwitter.svg"
+        ></a>
+        <a
+          class="option__action option__action--github"
+          :href="`https://github.com/${speaker.value.github}`"
+          target="_blank"
+          v-html="siGithub.svg"
+        ></a>
+      </div>
+    </div>
   </Tilt>
 </template>

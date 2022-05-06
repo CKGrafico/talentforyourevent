@@ -11,7 +11,9 @@ export default {
   },
   props: {
     options: Object,
-    parallax: Boolean
+    parallax: Boolean,
+    disabled: Boolean,
+    id: Number
   }
 };
 </script>
@@ -23,7 +25,8 @@ export default {
 </style>
 
 <template>
-  <div :class="parallax ? 'preserve' : ''" id="tiltMe" ref="tiltRef">
+  <div v-if="disabled"><slot></slot></div>
+  <div v-else :class="parallax ? 'preserve' : ''" :id="id" ref="tiltRef">
     <slot></slot>
   </div>
 </template>

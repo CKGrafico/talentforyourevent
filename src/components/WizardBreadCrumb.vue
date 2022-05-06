@@ -57,7 +57,9 @@ const props = defineProps({
     <ul class="breadcrumb__list">
       <li class="breadcrumb__item" v-for="(item, index) in items" :key="index">
         <span v-if="index != 0" class="breadcrumb__separator">/</span>
-        <span :class="`breadcrumb__text ${item === selected ? 'is-selected' : ''}`">{{ item }}</span>
+        <span :class="`breadcrumb__text ${item === selected ? 'is-selected' : ''}`">{{
+          $t(`breadcrumb.${item.toLowerCase()}`)
+        }}</span>
       </li>
     </ul>
   </nav>

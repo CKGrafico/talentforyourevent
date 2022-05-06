@@ -1,7 +1,7 @@
 import { UserSpeaker } from '~/models';
 import { prisma } from './db';
 
-export const MAX_SPEAKERS_TO_FIND = 3;
+export const MAX_SPEAKERS_TO_FIND = 6;
 
 export async function getRandomSpeakersFromTechnologiesAndCategories(
   technologies: number[],
@@ -60,6 +60,7 @@ export async function getRandomSpeakersFromTechnologiesAndCategories(
     technologies: x.technologies,
     categories: x.categories
   }));
+
   const take = MAX_SPEAKERS_TO_FIND;
   const skip = Math.max(0, Math.floor(Math.random() * speakers.length) - take);
   const randomSpeakers = speakers.slice(skip, take);
