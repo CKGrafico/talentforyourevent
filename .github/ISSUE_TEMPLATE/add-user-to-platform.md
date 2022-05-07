@@ -6,7 +6,7 @@ labels: Draft, User
 assignees: ""
 ---
 
-This template will help you to add a new user to the platform, the **Twitter** and \*_Github_ fields are required and you're not going to be able to change them.
+This template will help you to add a new user to the platform, the **Twitter** and **Github** fields are required and you're not going to be able to change them.
 Please, remember that you cannot add more fields or modify the template below, if you want to do it create a regular issue.
 
 Once you finish filling the form, please add a comment and we will remove the **Draft** label to proceed with the validation.
