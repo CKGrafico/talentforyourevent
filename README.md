@@ -33,6 +33,6 @@ You can only register **yourself** and this should be creating an issue, we have
 - [x] V1.5-beta - "To the moon" Public repository and anyone that feels underrepresented in our industry can join.
 - [x] V2 - "We are live" Release the public website in Spanish.
 - [ ] V2.5 - "Refinement" Refine everything we have created.
-- [ ] V3 - "Join us" Open the website to everyone in the ES industry.
+- [ ] V3 - "Join us" Open the website to everyone in the ES industry not only underrepresented groups.
 - [ ] V4 - Add calendar with events and the possibility to add events to the website.
 - [ ] V5 - "i18n" Open to other languages.
