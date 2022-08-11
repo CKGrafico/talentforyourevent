@@ -41,3 +41,5 @@ You can only register **yourself** and this should be creating an issue, we have
 ### Thanks to everyone who contributed:
 [![Contributors](https://contrib.rocks/image?repo=ckgrafico/talentforyourevent)](https://github.com/CKGrafico/talentforyourevent/graphs/contributors)
 
+---
+Made with 🍕 by [Quique Fdez Guerra](https://twitter.com/ckgrafico)
